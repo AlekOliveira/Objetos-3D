@@ -1,6 +1,6 @@
 ﻿namespace Objetos_3D
 {
-    partial class Form1
+    partial class Fprincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -29,62 +29,44 @@
         private void InitializeComponent()
         {
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.aaaaaaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.btAbrir = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // menuStrip1
+            // btAbrir
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aaaaaaToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.btAbrir.ActiveControl = null;
+            this.btAbrir.Location = new System.Drawing.Point(54, 108);
+            this.btAbrir.Name = "btAbrir";
+            this.btAbrir.Size = new System.Drawing.Size(109, 94);
+            this.btAbrir.Style = MetroFramework.MetroColorStyle.Purple;
+            this.btAbrir.TabIndex = 1;
+            this.btAbrir.Text = "Abrir";
+            this.btAbrir.UseSelectable = true;
+            this.btAbrir.Click += new System.EventHandler(this.BtAbrir_Click);
             // 
-            // aaaaaaToolStripMenuItem
-            // 
-            this.aaaaaaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.abrirToolStripMenuItem});
-            this.aaaaaaToolStripMenuItem.Name = "aaaaaaToolStripMenuItem";
-            this.aaaaaaToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.aaaaaaToolStripMenuItem.Text = "Arquivo";
-            // 
-            // abrirToolStripMenuItem
-            // 
-            this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.abrirToolStripMenuItem.Text = "Abrir";
-            this.abrirToolStripMenuItem.Click += new System.EventHandler(this.AbrirToolStripMenuItem_Click);
-            // 
-            // Form1
+            // Fprincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.menuStrip1);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.ClientSize = new System.Drawing.Size(988, 589);
+            this.Controls.Add(this.btAbrir);
+            this.Name = "Fprincipal";
+            this.Style = MetroFramework.MetroColorStyle.Purple;
+            this.Text = "Objetos-3D";
+            this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.TransparencyKey = System.Drawing.Color.LavenderBlush;
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem aaaaaaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem abrirToolStripMenuItem;
+        private MetroFramework.Controls.MetroTile btAbrir;
     }
 }
 
