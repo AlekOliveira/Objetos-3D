@@ -14,6 +14,10 @@ namespace Objetos_3D
 {
     public partial class Form1 : Form
     {
+
+        private List<Vertice> Vertices = new List<Vertice>();
+        private List<Face> Faces = new List<Face>();
+
         public Form1()
         {
             InitializeComponent();
@@ -29,17 +33,35 @@ namespace Objetos_3D
             {
                 try
                 {
+
                     StreamReader sr = new StreamReader(openFileDialog1.FileName);
-                    string linha = sr.ReadLine();
-                    while(sr.ReadLine() != null) 
+                    string[] split;
+                    string linha;     
+                    
+
+                    while((linha = sr.ReadLine()) != null) 
                     {
-                        Console.WriteLine(linha);
+                      
+                        if (linha[0] == 'v' && linha[1] == ' ')
+                        {
+                            Console.WriteLine(linha);
+                            linha = linha.Remove(0, 2);
+                            linha = linha.Replace('.', ',');
+                            split = linha.Split(' ');
+                            Vertices.Add(new Vertice((int)double.Parse(split[0]), (int)double.Parse(split[1]), (int)double.Parse(split[2])));
+                        }
 
+                        else if (linha[0] == 'f')
+                        {
+                            linha = linha.Remove(0, 2);
+                            split = linha.Split(' ');
+                            split[0] = split[0].Remove(1, 3);
 
+                            //Faces.Add(new Face())
 
+                            Console.WriteLine(linha);
+                        }
 
-
-                        linha = sr.ReadLine();
                     }
                 }
                 catch(SecurityException ex){
