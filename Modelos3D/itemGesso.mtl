@@ -1,0 +1,9 @@
+# Created by Every File Explorer
+
+newmtl mat_gesso
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.1490196 0.1490196 0.1490196
+d 1
+map_Kd gesso.png
+

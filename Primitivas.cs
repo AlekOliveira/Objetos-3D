@@ -10,7 +10,75 @@ namespace Objetos_3D
 {
     class Primitivas
     {
-        public static void Bresenhan(Point p1, Point p2, PictureBox pbx)
+        public static void Bresenhan(Point p1, Point p2, Bitmap b)
+        {
+            //Bitmap b = new Bitmap(pbx.Image);
+            int declive = 1;
+            int dx, dy, incNE, incE, d, x, y;
+            dx = p2.X - p1.X;
+            dy = p2.Y - p1.Y;
+            if (Math.Abs(dx) > Math.Abs(dy))
+            {
+                if (p1.X > p2.X)
+                {
+                    Bresenhan(p2, p1, b);
+                    return;
+                }
+                if (p1.Y > p2.Y)
+                {
+                    declive = -1;
+                    dy = -dy;
+                }
+                incE = 2 * dy;
+                incNE = 2 * (dy - dx);
+                d = incNE;
+                y = p1.Y;
+                for (x = p1.X; x <= p2.X; ++x)
+                {
+                    b.SetPixel(x, y, Color.Purple);
+                    if (d < 0)
+                        d += incE;
+                    else
+                    {
+                        d += incNE;
+                        y += declive;
+                    }
+                }
+            }
+            else
+            {
+                if (p1.Y > p2.Y)
+                {
+                    Bresenhan(p2, p1, b);
+                    return;
+                }
+
+                if (p1.X > p2.X)
+                {
+                    declive = -1;
+                    dx = -dx;
+                }
+
+                incE = 2 * dx;
+                incNE = 2 * (dx - dy);
+                d = incNE;
+                x = p1.X;
+                for (y = p1.Y; y <= p2.Y; ++y)
+                {
+                    b.SetPixel(x, y, Color.Purple);
+                    if (d < 0)
+                        d += incE;
+                    else
+                    {
+                        d += incNE;
+                        x += declive;
+                    }
+                }
+            }            
+        }
+
+
+        /*public static void Bresenhan(Point p1, Point p2, PictureBox pbx)
         {
             Bitmap b = new Bitmap(pbx.Image);
             int declive = 1;
@@ -35,7 +103,7 @@ namespace Objetos_3D
                 y = p1.Y;
                 for (x = p1.X; x <= p2.X; ++x)
                 {
-                    b.SetPixel(x, y, Color.Coral);
+                    b.SetPixel(x, y, Color.Purple);
                     if (d < 0)
                         d += incE;
                     else
@@ -65,7 +133,7 @@ namespace Objetos_3D
                 x = p1.X;
                 for (y = p1.Y; y <= p2.Y; ++y)
                 {
-                    b.SetPixel(x, y, Color.Coral);
+                    b.SetPixel(x, y, Color.Purple);
                     if (d < 0)
                         d += incE;
                     else
@@ -77,6 +145,8 @@ namespace Objetos_3D
             }
             pbx.Image = b;
         }
+         
+             */
 
         public static void EQgeral(Point p1, Point p2, PictureBox pbx)
         {
@@ -250,6 +320,17 @@ namespace Objetos_3D
                 }
             }
             pbx.Image = b;
+        }
+
+
+        public static bool TamanhoBmp(Bitmap bmp, Point p)
+        {
+            return p.X >= 0 && p.X < bmp.Width && p.Y >= 0 && p.Y < bmp.Height;
+        }
+
+        public static bool TamanhoPbx(PictureBox pbx, Point p)
+        {
+            return p.X >= 0 && p.X < pbx.Width && p.Y >= 0 && p.Y < pbx.Height;
         }
     }
 }

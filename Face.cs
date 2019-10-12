@@ -17,8 +17,8 @@ namespace Objetos_3D
             Faces[2] = c;
         }
 
-        public int Idx1 { get => Faces[0]; set => Faces[0] = value; }
-        public int Idx2 { get => Faces[1]; set => Faces[1] = value; }
-        public int Idx3 { get => Faces[2]; set => Faces[2] = value; }
+        public int Idx0 { get => Faces[0] -1; set => Faces[0] = value; }
+        public int Idx1 { get => Faces[1] -1; set => Faces[1] = value; }
+        public int Idx2 { get => Faces[2] -1; set => Faces[2] = value; }
     }
 }
