@@ -25,8 +25,6 @@ namespace Objetos_3D
             openFileDialog1.FileName = "Selecione um Objeto";
             openFileDialog1.Title = "Abrir Arquivos";
             this.pbx.MouseWheel += ScrollMouse;
-
-
         }
 
 
