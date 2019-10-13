@@ -14,11 +14,11 @@ namespace Objetos_3D
 {
     public partial class Fprincipal : MetroFramework.Forms.MetroForm
     {
-        private Obj3D Objeto3D = null; 
+        private Obj3D Objeto3D = null;
 
         public Fprincipal()
         {
-            InitializeComponent();          
+            InitializeComponent();
 
             pbx.Image = new Bitmap(pbx.Width, pbx.Height);
             openFileDialog1.Filter = "Objetos 3d|*.obj";
@@ -26,10 +26,10 @@ namespace Objetos_3D
             openFileDialog1.Title = "Abrir Arquivos";
             this.pbx.MouseWheel += ScrollMouse;
 
-            
+
         }
 
-                      
+
 
 
         private void BtAbrir_Click(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace Objetos_3D
 
                     while ((linha = sr.ReadLine()) != null)
                     {
-                        if(linha != "")
+                        if (linha != "")
                             if (linha[0] == 'v' && linha[1] == ' ')
                             {
                                 Console.WriteLine(linha);
@@ -75,9 +75,9 @@ namespace Objetos_3D
                     MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" +
                      $"Details:\n\n{ex.StackTrace}");
                     Objeto3D = null;
-                }                
+                }
             }
-        } 
+        }
 
         private void ScrollMouse(object sender, MouseEventArgs e)  // Evento que detecta Scrollup & Down
         {
@@ -90,14 +90,14 @@ namespace Objetos_3D
 
                 pbx.Image = new Bitmap(pbx.Width, pbx.Height);
                 Objeto3D.DesenhaFaces(pbx);
-            } 
+            }
         }
 
         private void Pbx_MouseMove(object sender, MouseEventArgs e)
         {
             if (Objeto3D != null && e.Button == MouseButtons.Right)
             {
-                metroLabel1.Text = "X: "+e.X.ToString() + "  Y:"+ e.Y.ToString();
+                label1.Text = "X: " + e.X.ToString() + "  Y:" + e.Y.ToString();
 
 
                 int dx = pbx.Width / 2;

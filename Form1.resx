@@ -123,14 +123,14 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btAbrir.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAABUUlEQVRIS8XWvyvEcRzH8Rsc
-        i5LyqwwW2aRuVCwGZZKNxWYQZVIUkQwGGS1y/4FBBpsBG+kyWJQsJBkVcn0936f3t/t8+x66837fqx71
-        /V539xyu+36/mSiK6iL1RQ/lJ70Yq6AT5e+tmR7k8IBKu0A7gg/XQg8W8dvyyCL4gmrpwTL+snvcVeEW
-        62hCEF6CxwZRl/A4fgyf48BAP1LDr5hCi5Fu9CCbDG+hFaelM5sVkU+G5cef/T40XVHDK/hEH/ZhvRcN
-        b0D+b10owHpXGt7EMTrwAesdaViuKmsYhce2NbwKiUrcY9ManofcFg/hsZyGhzCAG1jvCW0abobE32C9
-        EzRqWEzCY7uIr9ViBx6bQxA+g/XkGjGCOCw3hkdY7xlydYzDw3iH9S5RamrY444kkwfGIDwDj00gCMvT
-        wR6ST4f/5RoLaEAQdpf6or0o8wWLcMqkUUKZgwAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFRSURBVEhLxda/K8RxHMfxGxyLkvKrDBbZpG5ULAZl
+        ko3FZhBlUhSRDAYZLXL/gUEGmwEb6TJYlCwkGRVyfT3fp/e3+3z7Hrrzft+rHvX9Xnf3HK77fr+ZKIrq
+        IvVFD+UnvRiroBPl762ZHuTwgEq7QDuCD9dCDxbx2/LIIviCaunBMv6ye9xV4RbraEIQXoLHBlGX8Dh+
+        DJ/jwEA/UsOvmEKLkW70IJsMb6EVp6UzmxWRT4blx5/9PjRdUcMr+EQf9mG9Fw1vQP5vXSjAelca3sQx
+        OvAB6x1pWK4qaxiFx7Y1vAqJStxj0xqeh9wWD+GxnIaHMIAbWO8JbRpuhsTfYL0TNGpYTMJju4iv1WIH
+        HptDED6D9eQaMYI4LDeGR1jvGXJ1jMPDeIf1LlFqatjjjiSTB8YgPAOPTSAIy9PBHpJPh//lGgtoQBB2
+        l/qivSjzBYtwyqRRQpmDAAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

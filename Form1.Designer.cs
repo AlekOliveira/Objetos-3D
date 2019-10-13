@@ -32,8 +32,8 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btAbrir = new MetroFramework.Controls.MetroTile();
             this.pbx = new System.Windows.Forms.PictureBox();
-            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbx)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,36 +69,34 @@
             this.pbx.TabStop = false;
             this.pbx.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Pbx_MouseMove);
             // 
-            // metroPanel1
+            // metroTile1
             // 
-            this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.metroPanel1.HorizontalScrollbarBarColor = true;
-            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(1000, 60);
-            this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(226, 720);
-            this.metroPanel1.TabIndex = 4;
-            this.metroPanel1.VerticalScrollbarBarColor = true;
-            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 10;
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.metroTile1.Location = new System.Drawing.Point(992, 60);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(234, 720);
+            this.metroTile1.Style = MetroFramework.MetroColorStyle.Purple;
+            this.metroTile1.TabIndex = 6;
+            this.metroTile1.UseSelectable = true;
             // 
-            // metroLabel1
+            // label1
             // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(20, 783);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(39, 19);
-            this.metroLabel1.TabIndex = 5;
-            this.metroLabel1.Text = "X:  Y:";
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(23, 783);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "X:  Y:";
             // 
             // Fprincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1246, 800);
-            this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.metroPanel1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.pbx);
             this.Controls.Add(this.btAbrir);
             this.Name = "Fprincipal";
@@ -117,8 +115,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private MetroFramework.Controls.MetroTile btAbrir;
         private System.Windows.Forms.PictureBox pbx;
-        private MetroFramework.Controls.MetroPanel metroPanel1;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroTile metroTile1;
+        private System.Windows.Forms.Label label1;
     }
 }
 
