@@ -89,8 +89,6 @@ namespace Objetos_3D
             AtualizaVertices();
         }
 
-
-
         //METODOS PRIVADOS
         private double[,] NovaMatriz()
         {

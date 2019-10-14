@@ -119,6 +119,79 @@ namespace Objetos_3D
                 Objeto3D.DesenhaFaces(pbx);
             }
         }
+
+        private double maiorY()
+        {
+            double maior = 0;
+            foreach (Point p in Objeto3D.VerticesAtuais)            
+                if (p.Y > maior)
+                    maior = p.Y;
+            
+            return maior;
+        }
+        private double menorY()
+        {
+            double menor = 999999;
+            foreach (Point p in Objeto3D.VerticesAtuais)
+                if (p.Y < menor)
+                    menor = p.Y;
+            return menor;
+        }
+
+
+        private void MetroTile1_Click(object sender, EventArgs e)
+        {
+            double incX, yMax, yMin, xMin, xMax;
+            double meY = menorY();
+            double maY = maiorY();
+            List<ET>[] et = new List<ET>[(int)(maY - meY) + 1];
+            int idxMin = 999999;
+            int idxMax = 0;
+
+            for (int i = 0; i < Objeto3D.VerticesAtuais.Count - 1; i ++)
+            {
+
+                yMin = Math.Min(Objeto3D.VerticesAtuais[i].Y, Objeto3D.VerticesAtuais[i + 1].Y);
+                yMax = Math.Max(Objeto3D.VerticesAtuais[i].Y, Objeto3D.VerticesAtuais[i + 1].Y);
+                xMin = Math.Min(Objeto3D.VerticesAtuais[i].X, Objeto3D.VerticesAtuais[i + 1].X);                
+                xMax = Math.Max(Objeto3D.VerticesAtuais[i].X, Objeto3D.VerticesAtuais[i + 1].X);
+
+                incX = yMax - yMin;
+
+                if (incX != 0)
+                    incX = xMax - xMin / incX;
+
+                if (et[(int)(yMin - meY)] == null)
+                {
+                    et[(int)(yMin - meY)] = new List<ET>();
+                    idxMin = Math.Min((int)(yMin - meY), idxMin);
+                }                    
+                et[(int)(yMin - meY)].Add(new ET(incX, yMax, xMin));
+            }
+
+            yMin = Math.Min(Objeto3D.VerticesAtuais[0].Y, Objeto3D.VerticesAtuais[Objeto3D.VerticesAtuais.Count - 1].Y);
+            yMax = Math.Max(Objeto3D.VerticesAtuais[0].Y, Objeto3D.VerticesAtuais[Objeto3D.VerticesAtuais.Count - 1].Y);
+            xMin = Math.Min(Objeto3D.VerticesAtuais[0].X, Objeto3D.VerticesAtuais[Objeto3D.VerticesAtuais.Count - 1].X);
+            xMax = Math.Max(Objeto3D.VerticesAtuais[0].X, Objeto3D.VerticesAtuais[Objeto3D.VerticesAtuais.Count - 1].X);
+
+            incX = yMax - yMin;
+
+            if (incX != 0)
+                incX = xMax - xMin / incX;
+
+            if (et[(int)(yMin - meY)] == null)
+            {
+                et[(int)(yMin - meY)] = new List<ET>();
+                idxMin = Math.Min((int)(yMin - meY), idxMin);
+            }                
+            et[(int)(yMin - meY)].Add(new ET(incX, yMax, xMin));
+
+            List<ET> aet = new List<ET>();
+
+            //for(int i = idx; i < )
+        }
+
+       
     }
 }
 

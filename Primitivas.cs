@@ -285,7 +285,7 @@ namespace Objetos_3D
                 p1 = p2;
                 p2 = aux;
             }
-            int Length, I;
+            int Length; 
             double X, Y, Xinc, Yinc;
 
             //Guardando a maior largura

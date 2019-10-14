@@ -32,8 +32,8 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btAbrir = new MetroFramework.Controls.MetroTile();
             this.pbx = new System.Windows.Forms.PictureBox();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.label1 = new System.Windows.Forms.Label();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.pbx)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,6 +69,16 @@
             this.pbx.TabStop = false;
             this.pbx.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Pbx_MouseMove);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(23, 783);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "X:  Y:";
+            // 
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
@@ -79,16 +89,7 @@
             this.metroTile1.Style = MetroFramework.MetroColorStyle.Purple;
             this.metroTile1.TabIndex = 6;
             this.metroTile1.UseSelectable = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(23, 783);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "X:  Y:";
+            this.metroTile1.Click += new System.EventHandler(this.MetroTile1_Click);
             // 
             // Fprincipal
             // 
@@ -115,8 +116,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private MetroFramework.Controls.MetroTile btAbrir;
         private System.Windows.Forms.PictureBox pbx;
-        private MetroFramework.Controls.MetroTile metroTile1;
         private System.Windows.Forms.Label label1;
+        private MetroFramework.Controls.MetroTile metroTile1;
     }
 }
 
