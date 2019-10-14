@@ -184,7 +184,7 @@ namespace Objetos_3D
                 et[(int)(yMin - meY)] = new List<ET>();
                 idxMin = Math.Min((int)(yMin - meY), idxMin);
             }                
-            et[(int)(yMin - meY)].Add(new ET(incX, yMax, xMin));
+            et[(int)(yMin - meY)].Add(new ET(incX, yMax, xMin));//
 
             List<ET> aet = new List<ET>();
 
