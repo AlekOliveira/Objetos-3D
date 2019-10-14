@@ -165,6 +165,7 @@ namespace Objetos_3D
                 {
                     et[(int)(yMin - meY)] = new List<ET>();
                     idxMin = Math.Min((int)(yMin - meY), idxMin);
+                    idxMax = Math.Max((int)(yMin - meY), idxMin);
                 }                    
                 et[(int)(yMin - meY)].Add(new ET(incX, yMax, xMin));
             }
@@ -183,12 +184,17 @@ namespace Objetos_3D
             {
                 et[(int)(yMin - meY)] = new List<ET>();
                 idxMin = Math.Min((int)(yMin - meY), idxMin);
+                idxMax = Math.Max((int)(yMin - meY), idxMin);
             }                
-            et[(int)(yMin - meY)].Add(new ET(incX, yMax, xMin));//
+            et[(int)(yMin - meY)].Add(new ET(incX, yMax, xMin));
 
             List<ET> aet = new List<ET>();
 
-            //for(int i = idx; i < )
+            foreach (ET x in et[idxMin])
+            {
+                aet.Add(x);
+            }
+
         }
 
        
