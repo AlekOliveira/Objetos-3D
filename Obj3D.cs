@@ -11,9 +11,11 @@ namespace Objetos_3D
     class Obj3D
     {
         public List<Vertice> Vertices = new List<Vertice>();
-        public List<Point> VerticesAtuais = new List<Point>();
+        public List<Vertice> VerticesAtuais = new List<Vertice>();
+
+        //public List<Point> VerticesAtuais = new List<Point>();
         public List<Face> Faces = new List<Face>();
-        private double[,] MA = new double[3,3];
+        private double[,] MA = new double[4,4];
 
         
 
@@ -28,48 +30,42 @@ namespace Objetos_3D
         //METODOS PUBLICOS
         public void DesenhaFaces(PictureBox pbx)
         {
-            Point p1, p2;
+            //Point p1, p2;
+            Vertice v1, v2, v3;
             int dx = pbx.Width/2;
             int dy = pbx.Height/2;
             Bitmap bmp = new Bitmap(pbx.Image);
 
             foreach (Face f in this.Faces)
             {
-                p1 = new Point(VerticesAtuais[f.Idx0].X + dx, VerticesAtuais[f.Idx0].Y + dy);
-                p2 = new Point(VerticesAtuais[f.Idx1].X + dx, VerticesAtuais[f.Idx1].Y + dy);
-                if (Primitivas.TamanhoPbx(pbx, p1) && Primitivas.TamanhoPbx(pbx, p2))
-                {
-                    
-                    Primitivas.Bresenhan(p1, p2, bmp);
-                }    
 
-                p1 = new Point(VerticesAtuais[f.Idx1].X + dx, VerticesAtuais[f.Idx1].Y + dy);
-                p2 = new Point(VerticesAtuais[f.Idx2].X + dx, VerticesAtuais[f.Idx2].Y + dy);
-                if (Primitivas.TamanhoPbx(pbx, p1) && Primitivas.TamanhoPbx(pbx, p2))
-                {
-                    
-                    Primitivas.Bresenhan(p1, p2, bmp);
-                }
+                //p1 = new Point(VerticesAtuais[f.Idx0].X + dx, VerticesAtuais[f.Idx0].Y + dy);
+                //p2 = new Point(VerticesAtuais[f.Idx1].X + dx, VerticesAtuais[f.Idx1].Y + dy);
+                v1 = new Vertice(VerticesAtuais[f.Idx0].X + dx, VerticesAtuais[f.Idx0].Y + dy, VerticesAtuais[f.Idx0].Z);
+                v2 = new Vertice(VerticesAtuais[f.Idx1].X + dx, VerticesAtuais[f.Idx1].Y + dy, VerticesAtuais[f.Idx1].Z);
+                v3 = new Vertice(VerticesAtuais[f.Idx2].X + dx, VerticesAtuais[f.Idx2].Y + dy, VerticesAtuais[f.Idx2].Z);               
 
-                p1 = new Point(VerticesAtuais[f.Idx2].X + dx, VerticesAtuais[f.Idx2].Y + dy);
-                p2 = new Point(VerticesAtuais[f.Idx0].X + dx, VerticesAtuais[f.Idx0].Y + dy);
-                if (Primitivas.TamanhoPbx(pbx, p1) && Primitivas.TamanhoPbx(pbx, p2))
-                {
-                   
-                    Primitivas.Bresenhan(p1, p2, bmp);
-                }
+                
+               //if (Primitivas.TamanhoPbx(pbx, v1) && Primitivas.TamanhoPbx(pbx, v2))              
+                     Primitivas.Bresenhan(v1, v2, bmp);
+
+               //if (Primitivas.TamanhoPbx(pbx, v2) && Primitivas.TamanhoPbx(pbx, v3))
+                    Primitivas.Bresenhan(v2, v3, bmp);
+
+                //if (Primitivas.TamanhoPbx(pbx, v3) && Primitivas.TamanhoPbx(pbx, v1))
+                    Primitivas.Bresenhan(v3, v1, bmp);
 
                 pbx.Image = bmp;
             }            
         }
-        public void Translada(double Tx, double Ty)
+        public void Translada(double Tx, double Ty, double Tz)
         {
-            double[,] M = NovaMatriz(); M[0, 2] = Tx; M[1, 2] = Ty;
+            double[,] M = NovaMatriz(); M[0, 3] = Tx; M[1, 3] = Ty; M[2,3] = Tz;
 
             MultMat(M);
             AtualizaVertices();
         }
-        public void Escala(double Sx, double Sy)
+        public void Escala(double Sx, double Sy, double Sz)
         {
             double[,] M = NovaMatriz(); M[0, 0] = Sx; M[1, 1] = Sy;
 
@@ -83,28 +79,28 @@ namespace Objetos_3D
             Mx = Mx / Vertices.Count;
             My = My / Vertices.Count;
 
-            Translada(Mx, My);
+            // Translada(Mx, My);
             MultMat(M);
-            Translada(-Mx, -My);
+            //Translada(-Mx, -My);
             AtualizaVertices();
         }
 
         //METODOS PRIVADOS
         private double[,] NovaMatriz()
         {
-            double[,] M = new double[3, 3];
-            M[0, 0] = M[1, 1] = M[2, 2] = 1;
+            double[,] M = new double[4, 4];
+            M[0, 0] = M[1, 1] = M[2, 2] = M[3,3] = 1;
             return M;
         }
         private void MultMat(double[,] M)
         {
             double soma = 0;
-            for (int l = 0; l < 3; l++)
+            for (int l = 0; l < 4; l++)
             {
-                for (int c = 0; c < 3; c++)
+                for (int c = 0; c < 4; c++)
                 {
                     soma = 0;
-                    for (int k = 0; k < 3; k++)
+                    for (int k = 0; k < 4; k++)
                         soma += MA[l, k] * M[k, c];
                     this.MA[l, c] = soma;
                 }
@@ -112,15 +108,16 @@ namespace Objetos_3D
         }        
         private void AtualizaVertices()
         {
-            Vertice V;
-            Point newV = new Point();
+            Vertice V, newV;
             VerticesAtuais.Clear();
 
             for (int i = 0; i < Vertices.Count; i++)
             {
+                newV = new Vertice();
                 V = Vertices[i];
-                newV.X = (int)((V.X * MA[0, 0]) + (V.Y * MA[0, 1]) + MA[0, 2]);
-                newV.Y = (int)((V.X * MA[1, 0]) + (V.Y * MA[1, 1]) + MA[1, 2]);
+                newV.X = (int)((V.X * MA[0, 0]) + (V.Y * MA[0, 1]) + (V.Z * MA[0, 2]) + MA[0, 3]);
+                newV.Y = (int)((V.X * MA[1, 0]) + (V.Y * MA[1, 1]) + (V.Z * MA[1, 2]) + MA[1, 3]);
+                newV.Z = (int)((V.X * MA[2, 0]) + (V.Y * MA[2, 1]) + (V.Z * MA[2, 2]) + MA[2, 3]);
                 this.VerticesAtuais.Add(newV);
             }
         }

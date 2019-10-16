@@ -15,7 +15,8 @@ namespace Objetos_3D
     public partial class Fprincipal : MetroFramework.Forms.MetroForm
     {
         private Obj3D Objeto3D = null;
-
+        private Point posi;
+        private Boolean mouseDown = false;
         public Fprincipal()
         {
             InitializeComponent();
@@ -82,9 +83,9 @@ namespace Objetos_3D
             if (Objeto3D != null)
             {
                 if (e.Delta > 0)//up
-                    Objeto3D.Escala(1.1, 1.1);
+                    Objeto3D.Escala(1.1, 1.1, 1.1);
                 else//down
-                    Objeto3D.Escala(0.9, 0.9);
+                    Objeto3D.Escala(0.9, 0.9, 0.9);
 
                 pbx.Image = new Bitmap(pbx.Width, pbx.Height);
                 Objeto3D.DesenhaFaces(pbx);
@@ -95,15 +96,12 @@ namespace Objetos_3D
         {
             if (Objeto3D != null && e.Button == MouseButtons.Right)
             {
-                label1.Text = "X: " + e.X.ToString() + "  Y:" + e.Y.ToString();
-
-
-                int dx = pbx.Width / 2;
-                int dy = pbx.Height / 2;
-
-
-                //FAZER UM METODO GET CENTER
-                double Mx = 0, My = 0;
+                //posX = e.X;
+                //posY = e.Y;
+                //int dx = pbx.Width / 2;
+                //int dy = pbx.Height / 2;
+                //Obtem o centro do obj na posicao atual
+                /* Mx = 0, My = 0;
                 for (int i = 0; i < Objeto3D.VerticesAtuais.Count; i++)
                 {
                     Mx += Objeto3D.VerticesAtuais[i].X;
@@ -111,16 +109,32 @@ namespace Objetos_3D
                 }
                 Mx = Mx / Objeto3D.VerticesAtuais.Count;
                 My = My / Objeto3D.VerticesAtuais.Count;
+                Objeto3D.Translada(-Mx, -My, 0);
+                Objeto3D.Translada(e.X - dx, e.Y - dy, 0);*/
+                // Objeto3D.Translada(e.X - posX, e.Y - posY, 0);
 
-                Objeto3D.Translada(-Mx, -My);
-                Objeto3D.Translada(e.X - dx, e.Y - dy);
 
+                
+                label1.Text = "X: " + e.X.ToString() + "  Y:" + e.Y.ToString();
+
+                pbx.Image.Dispose();
                 pbx.Image = new Bitmap(pbx.Width, pbx.Height);
+
+                Objeto3D.Translada(e.X - posi.X, e.Y - posi.Y, 0);
                 Objeto3D.DesenhaFaces(pbx);
+
+                posi = e.Location;
+                
             }
         }
 
-        private double maiorY()
+        private void Pbx_MouseDown(object sender, MouseEventArgs e)
+        {
+            posi = new Point(e.X, e.Y);
+        }
+        
+
+        /* double maiorY()
         {
             double maior = 0;
             foreach (Point p in Objeto3D.VerticesAtuais)            
@@ -136,13 +150,13 @@ namespace Objetos_3D
                 if (p.Y < menor)
                     menor = p.Y;
             return menor;
-        }
+        }*/
 
 
         private void MetroTile1_Click(object sender, EventArgs e)
-        {
+        {/*
             double incX, yMax, yMin, xMin, xMax;
-            double meY = menorY();
+            //double meY = menorY();
             double maY = maiorY();
             List<ET>[] et = new List<ET>[(int)(maY - meY) + 1];
             int idxMin = 999999;
@@ -193,7 +207,7 @@ namespace Objetos_3D
             foreach (ET x in et[idxMin])
             {
                 aet.Add(x);
-            }
+            }*/
 
         }
 

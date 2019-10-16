@@ -34,6 +34,7 @@
             this.pbx = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.metroToggle1 = new MetroFramework.Controls.MetroToggle();
             ((System.ComponentModel.ISupportInitialize)(this.pbx)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,6 +68,7 @@
             this.pbx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbx.TabIndex = 3;
             this.pbx.TabStop = false;
+            this.pbx.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Pbx_MouseDown);
             this.pbx.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Pbx_MouseMove);
             // 
             // label1
@@ -82,20 +84,31 @@
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
-            this.metroTile1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.metroTile1.Location = new System.Drawing.Point(992, 60);
+            this.metroTile1.Location = new System.Drawing.Point(1000, 488);
             this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(234, 720);
+            this.metroTile1.Size = new System.Drawing.Size(226, 292);
             this.metroTile1.Style = MetroFramework.MetroColorStyle.Purple;
             this.metroTile1.TabIndex = 6;
             this.metroTile1.UseSelectable = true;
             this.metroTile1.Click += new System.EventHandler(this.MetroTile1_Click);
+            // 
+            // metroToggle1
+            // 
+            this.metroToggle1.AutoSize = true;
+            this.metroToggle1.Location = new System.Drawing.Point(1033, 103);
+            this.metroToggle1.Name = "metroToggle1";
+            this.metroToggle1.Size = new System.Drawing.Size(80, 17);
+            this.metroToggle1.Style = MetroFramework.MetroColorStyle.Purple;
+            this.metroToggle1.TabIndex = 8;
+            this.metroToggle1.Text = "Off";
+            this.metroToggle1.UseSelectable = true;
             // 
             // Fprincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1246, 800);
+            this.Controls.Add(this.metroToggle1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.pbx);
@@ -118,6 +131,7 @@
         private System.Windows.Forms.PictureBox pbx;
         private System.Windows.Forms.Label label1;
         private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroToggle metroToggle1;
     }
 }
 
