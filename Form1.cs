@@ -15,13 +15,16 @@ namespace Objetos_3D
     public partial class Fprincipal : MetroFramework.Forms.MetroForm
     {
         private Obj3D Objeto3D = null;
+        private DirectBitmap Dbmp;
         private Point posi;
         private Boolean mouseDown = false;
         public Fprincipal()
         {
             InitializeComponent();
 
-            pbx.Image = new Bitmap(pbx.Width, pbx.Height);
+            Dbmp= new DirectBitmap(pbx.Width, pbx.Height);
+            pbx.Image = (Image)Dbmp.Bitmap;
+
             openFileDialog1.Filter = "Objetos 3d|*.obj";
             openFileDialog1.FileName = "Selecione um Objeto";
             openFileDialog1.Title = "Abrir Arquivos";
@@ -67,7 +70,7 @@ namespace Objetos_3D
                             }
                     }
                     Objeto3D = new Obj3D(Vertices, Faces); //talvez vire lista
-                    Objeto3D.DesenhaFaces(pbx);
+                    Objeto3D.DesenhaFaces(Dbmp);
                 }
                 catch (SecurityException ex)
                 {
@@ -88,7 +91,7 @@ namespace Objetos_3D
                     Objeto3D.Escala(0.9, 0.9, 0.9);
 
                 pbx.Image = new Bitmap(pbx.Width, pbx.Height);
-                Objeto3D.DesenhaFaces(pbx);
+                Objeto3D.DesenhaFaces(Dbmp);
             }
         }
 
@@ -98,12 +101,16 @@ namespace Objetos_3D
             {                                
                 label1.Text = "X: " + e.X.ToString() + "  Y:" + e.Y.ToString();
 
-                pbx.Image.Dispose();
+                pbx.Image = null;
+                Dbmp.Dispose();
+                Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
+                pbx.Image = (Image)Dbmp.Bitmap;
+                
                 // pbx.Image = new Bitmap(pbx.Width, pbx.Height);
 
                 Objeto3D.Translada(e.X - posi.X, e.Y - posi.Y, 0);
-                Objeto3D.DesenhaFaces(pbx);
-
+                Objeto3D.DesenhaFaces(Dbmp);
+                pbx.Refresh();
                 posi = e.Location;                
             }
         }

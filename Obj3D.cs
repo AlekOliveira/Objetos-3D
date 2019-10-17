@@ -28,13 +28,11 @@ namespace Objetos_3D
         }
 
         //METODOS PUBLICOS
-        public void DesenhaFaces(PictureBox pbx)
+        public void DesenhaFaces(DirectBitmap bmp)
         {
             Vertice v1, v2, v3;
-            int dx = pbx.Width/2;
-            int dy = pbx.Height/2;
-            DirectBitmap bmp = new DirectBitmap(pbx.Width, pbx.Height);
-            pbx.Image.Dispose();
+            int dx = bmp.Width/2;
+            int dy = bmp.Height/2;
             foreach (Face f in this.Faces)
             {
                 v1 = new Vertice(VerticesAtuais[f.Idx0].X + dx, VerticesAtuais[f.Idx0].Y + dy, VerticesAtuais[f.Idx0].Z);
@@ -44,7 +42,7 @@ namespace Objetos_3D
                 Primitivas.Bresenhan(v2, v3, bmp);               
                 Primitivas.Bresenhan(v3, v1, bmp);
             }
-            pbx.Image = (Image)bmp.Bitmap;
+
         }
 
         public void Translada(double Tx, double Ty, double Tz)
