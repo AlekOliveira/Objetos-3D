@@ -10,7 +10,8 @@ namespace Objetos_3D
 {
     class Primitivas
     {
-        public static void Bresenhan(Vertice p1, Vertice p2, Bitmap b)
+        //public static void Bresenhan(Vertice p1, Vertice p2, Bitmap b)
+        public static void Bresenhan(Vertice p1, Vertice p2, DirectBitmap b)
         {
             //Bitmap b = new Bitmap(pbx.Image);
             int declive = 1;
@@ -331,6 +332,11 @@ namespace Objetos_3D
         public static bool TamanhoPbx(PictureBox pbx, Vertice v)
         {
             return v.X >= 0 && v.X < pbx.Width && v.Y >= 0 && v.Y < pbx.Height;
+        }
+
+        public static bool TamanhoDirectBmp(DirectBitmap bmp, Vertice v)
+        {
+            return v.X >= 0 && v.X < bmp.Width && v.Y >= 0 && v.Y < bmp.Height;
         }
     }
 }

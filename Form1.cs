@@ -95,39 +95,18 @@ namespace Objetos_3D
         private void Pbx_MouseMove(object sender, MouseEventArgs e)
         {
             if (Objeto3D != null && e.Button == MouseButtons.Right)
-            {
-                //posX = e.X;
-                //posY = e.Y;
-                //int dx = pbx.Width / 2;
-                //int dy = pbx.Height / 2;
-                //Obtem o centro do obj na posicao atual
-                /* Mx = 0, My = 0;
-                for (int i = 0; i < Objeto3D.VerticesAtuais.Count; i++)
-                {
-                    Mx += Objeto3D.VerticesAtuais[i].X;
-                    My += Objeto3D.VerticesAtuais[i].Y;
-                }
-                Mx = Mx / Objeto3D.VerticesAtuais.Count;
-                My = My / Objeto3D.VerticesAtuais.Count;
-                Objeto3D.Translada(-Mx, -My, 0);
-                Objeto3D.Translada(e.X - dx, e.Y - dy, 0);*/
-                // Objeto3D.Translada(e.X - posX, e.Y - posY, 0);
-
-
-                
+            {                                
                 label1.Text = "X: " + e.X.ToString() + "  Y:" + e.Y.ToString();
 
                 pbx.Image.Dispose();
-                pbx.Image = new Bitmap(pbx.Width, pbx.Height);
+                // pbx.Image = new Bitmap(pbx.Width, pbx.Height);
 
                 Objeto3D.Translada(e.X - posi.X, e.Y - posi.Y, 0);
                 Objeto3D.DesenhaFaces(pbx);
 
-                posi = e.Location;
-                
+                posi = e.Location;                
             }
         }
-
         private void Pbx_MouseDown(object sender, MouseEventArgs e)
         {
             posi = new Point(e.X, e.Y);

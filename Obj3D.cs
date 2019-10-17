@@ -30,34 +30,23 @@ namespace Objetos_3D
         //METODOS PUBLICOS
         public void DesenhaFaces(PictureBox pbx)
         {
-            //Point p1, p2;
             Vertice v1, v2, v3;
             int dx = pbx.Width/2;
             int dy = pbx.Height/2;
-            Bitmap bmp = new Bitmap(pbx.Image);
-
+            DirectBitmap bmp = new DirectBitmap(pbx.Width, pbx.Height);
+            pbx.Image.Dispose();
             foreach (Face f in this.Faces)
             {
-
-                //p1 = new Point(VerticesAtuais[f.Idx0].X + dx, VerticesAtuais[f.Idx0].Y + dy);
-                //p2 = new Point(VerticesAtuais[f.Idx1].X + dx, VerticesAtuais[f.Idx1].Y + dy);
                 v1 = new Vertice(VerticesAtuais[f.Idx0].X + dx, VerticesAtuais[f.Idx0].Y + dy, VerticesAtuais[f.Idx0].Z);
                 v2 = new Vertice(VerticesAtuais[f.Idx1].X + dx, VerticesAtuais[f.Idx1].Y + dy, VerticesAtuais[f.Idx1].Z);
                 v3 = new Vertice(VerticesAtuais[f.Idx2].X + dx, VerticesAtuais[f.Idx2].Y + dy, VerticesAtuais[f.Idx2].Z);               
-
-                
-               //if (Primitivas.TamanhoPbx(pbx, v1) && Primitivas.TamanhoPbx(pbx, v2))              
-                     Primitivas.Bresenhan(v1, v2, bmp);
-
-               //if (Primitivas.TamanhoPbx(pbx, v2) && Primitivas.TamanhoPbx(pbx, v3))
-                    Primitivas.Bresenhan(v2, v3, bmp);
-
-                //if (Primitivas.TamanhoPbx(pbx, v3) && Primitivas.TamanhoPbx(pbx, v1))
-                    Primitivas.Bresenhan(v3, v1, bmp);
-
-                pbx.Image = bmp;
-            }            
+                Primitivas.Bresenhan(v1, v2, bmp);               
+                Primitivas.Bresenhan(v2, v3, bmp);               
+                Primitivas.Bresenhan(v3, v1, bmp);
+            }
+            pbx.Image = (Image)bmp.Bitmap;
         }
+
         public void Translada(double Tx, double Ty, double Tz)
         {
             double[,] M = NovaMatriz(); M[0, 3] = Tx; M[1, 3] = Ty; M[2,3] = Tz;
@@ -70,14 +59,14 @@ namespace Objetos_3D
             double[,] M = NovaMatriz(); M[0, 0] = Sx; M[1, 1] = Sy;
 
             //X e Y médio
-            double Mx = 0, My = 0;
+            /*double Mx = 0, My = 0;
             for (int i = 0; i < Vertices.Count; i++)
             {
                 Mx += Vertices[i].X;
                 My += Vertices[i].Y;
             }
             Mx = Mx / Vertices.Count;
-            My = My / Vertices.Count;
+            My = My / Vertices.Count;*/
 
             // Translada(Mx, My);
             MultMat(M);
