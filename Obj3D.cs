@@ -35,14 +35,13 @@ namespace Objetos_3D
             int dy = bmp.Height/2;
             foreach (Face f in this.Faces)
             {
-                v1 = new Vertice(VerticesAtuais[f.Idx0].X + dx, VerticesAtuais[f.Idx0].Y + dy, VerticesAtuais[f.Idx0].Z);
-                v2 = new Vertice(VerticesAtuais[f.Idx1].X + dx, VerticesAtuais[f.Idx1].Y + dy, VerticesAtuais[f.Idx1].Z);
-                v3 = new Vertice(VerticesAtuais[f.Idx2].X + dx, VerticesAtuais[f.Idx2].Y + dy, VerticesAtuais[f.Idx2].Z);               
+                v1 = new Vertice(VerticesAtuais[f.Idx0].X + dx, VerticesAtuais[f.Idx0].Y + dy, 0);
+                v2 = new Vertice(VerticesAtuais[f.Idx1].X + dx, VerticesAtuais[f.Idx1].Y + dy, 0);
+                v3 = new Vertice(VerticesAtuais[f.Idx2].X + dx, VerticesAtuais[f.Idx2].Y + dy, 0);               
                 Primitivas.Bresenhan(v1, v2, bmp);               
                 Primitivas.Bresenhan(v2, v3, bmp);               
                 Primitivas.Bresenhan(v3, v1, bmp);
             }
-
         }
 
         public void Translada(double Tx, double Ty, double Tz)

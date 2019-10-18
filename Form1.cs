@@ -24,7 +24,6 @@ namespace Objetos_3D
 
             Dbmp= new DirectBitmap(pbx.Width, pbx.Height);
             pbx.Image = (Image)Dbmp.Bitmap;
-
             openFileDialog1.Filter = "Objetos 3d|*.obj";
             openFileDialog1.FileName = "Selecione um Objeto";
             openFileDialog1.Title = "Abrir Arquivos";
@@ -69,8 +68,14 @@ namespace Objetos_3D
                                 Faces.Add(new Face(int.Parse(split[0]), int.Parse(split[1]), int.Parse(split[2])));
                             }
                     }
+                    pbx.Image = null;
+                    Dbmp.Dispose();
+                    Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
+                    pbx.Image = (Image)Dbmp.Bitmap;
+
                     Objeto3D = new Obj3D(Vertices, Faces); //talvez vire lista
                     Objeto3D.DesenhaFaces(Dbmp);
+                    pbx.Refresh();
                 }
                 catch (SecurityException ex)
                 {
@@ -85,13 +90,20 @@ namespace Objetos_3D
         {
             if (Objeto3D != null)
             {
+                
+
                 if (e.Delta > 0)//up
                     Objeto3D.Escala(1.1, 1.1, 1.1);
                 else//down
                     Objeto3D.Escala(0.9, 0.9, 0.9);
 
-                pbx.Image = new Bitmap(pbx.Width, pbx.Height);
+                pbx.Image = null;
+                Dbmp.Dispose();
+                Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
+                pbx.Image = (Image)Dbmp.Bitmap;
+
                 Objeto3D.DesenhaFaces(Dbmp);
+                pbx.Refresh();
             }
         }
 
@@ -104,9 +116,7 @@ namespace Objetos_3D
                 pbx.Image = null;
                 Dbmp.Dispose();
                 Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
-                pbx.Image = (Image)Dbmp.Bitmap;
-                
-                // pbx.Image = new Bitmap(pbx.Width, pbx.Height);
+                pbx.Image = (Image)Dbmp.Bitmap;  
 
                 Objeto3D.Translada(e.X - posi.X, e.Y - posi.Y, 0);
                 Objeto3D.DesenhaFaces(Dbmp);
