@@ -89,9 +89,7 @@ namespace Objetos_3D
         private void ScrollMouse(object sender, MouseEventArgs e)  // Evento que detecta Scrollup & Down
         {
             if (Objeto3D != null)
-            {
-                
-
+            {     
                 if (e.Delta > 0)//up
                     Objeto3D.Escala(1.1, 1.1, 1.1);
                 else//down
@@ -207,7 +205,41 @@ namespace Objetos_3D
 
         }
 
-       
+        private void MetroTile2_Click(object sender, EventArgs e)
+        {
+            pbx.Image = null;
+            Dbmp.Dispose();
+            Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
+            pbx.Image = (Image)Dbmp.Bitmap;
+            
+            Objeto3D.RotacionaX(10.0);
+            Objeto3D.DesenhaFaces(Dbmp);
+            pbx.Refresh();
+        }
+
+        private void MetroTile3_Click(object sender, EventArgs e)
+        {
+            pbx.Image = null;
+            Dbmp.Dispose();
+            Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
+            pbx.Image = (Image)Dbmp.Bitmap;
+
+            Objeto3D.RotacionaZ(10.0);
+            Objeto3D.DesenhaFaces(Dbmp);
+            pbx.Refresh();
+        }
+
+        private void MetroTile4_Click(object sender, EventArgs e)
+        {
+            pbx.Image = null;
+            Dbmp.Dispose();
+            Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
+            pbx.Image = (Image)Dbmp.Bitmap;
+
+            Objeto3D.RotacionaY(10.0);
+            Objeto3D.DesenhaFaces(Dbmp);
+            pbx.Refresh();
+        }
     }
 }
 

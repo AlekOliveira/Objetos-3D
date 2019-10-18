@@ -11,7 +11,7 @@ namespace Objetos_3D
     class Primitivas
     {
         //public static void Bresenhan(Vertice p1, Vertice p2, Bitmap b)
-        public static void Bresenhan(Vertice p1, Vertice p2, DirectBitmap b)
+        public static void Bresenhan(Vertice p1, Vertice p2, DirectBitmap b, Color c)
         {
             //Bitmap b = new Bitmap(pbx.Image);
             int declive = 1;
@@ -22,7 +22,7 @@ namespace Objetos_3D
             {
                 if (p1.X > p2.X)
                 {
-                    Bresenhan(p2, p1, b);
+                    Bresenhan(p2, p1, b, c);
                     return;
                 }
                 if (p1.Y > p2.Y)
@@ -36,7 +36,7 @@ namespace Objetos_3D
                 y = p1.Y;
                 for (x = p1.X; x <= p2.X; ++x)
                 {
-                    b.SetPixel(x, y, Color.Purple);
+                    b.SetPixel(x, y, c);
                     if (d < 0)
                         d += incE;
                     else
@@ -50,7 +50,7 @@ namespace Objetos_3D
             {
                 if (p1.Y > p2.Y)
                 {
-                    Bresenhan(p2, p1, b);
+                    Bresenhan(p2, p1, b, c);
                     return;
                 }
 
@@ -66,7 +66,7 @@ namespace Objetos_3D
                 x = p1.X;
                 for (y = p1.Y; y <= p2.Y; ++y)
                 {
-                    b.SetPixel(x, y, Color.Purple);
+                    b.SetPixel(x, y, c);
                     if (d < 0)
                         d += incE;
                     else

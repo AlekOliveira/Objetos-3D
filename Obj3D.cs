@@ -38,9 +38,9 @@ namespace Objetos_3D
                 v1 = new Vertice(VerticesAtuais[f.Idx0].X + dx, VerticesAtuais[f.Idx0].Y + dy, 0);
                 v2 = new Vertice(VerticesAtuais[f.Idx1].X + dx, VerticesAtuais[f.Idx1].Y + dy, 0);
                 v3 = new Vertice(VerticesAtuais[f.Idx2].X + dx, VerticesAtuais[f.Idx2].Y + dy, 0);               
-                Primitivas.Bresenhan(v1, v2, bmp);               
-                Primitivas.Bresenhan(v2, v3, bmp);               
-                Primitivas.Bresenhan(v3, v1, bmp);
+                Primitivas.Bresenhan(v1, v2, bmp, Color.White);               
+                Primitivas.Bresenhan(v2, v3, bmp, Color.White);               
+                Primitivas.Bresenhan(v3, v1, bmp, Color.White);
             }
         }
 
@@ -51,23 +51,54 @@ namespace Objetos_3D
             MultMat(M);
             AtualizaVertices();
         }
+
+        public void RotacionaX(double R)
+        {
+            R = (R * Math.PI) / 180;
+           
+            double[,] M = NovaMatriz();
+            M[1, 1] = Math.Cos(R);
+            M[1, 2] = -Math.Sin(R);
+            M[2, 1] = Math.Sin(R);
+            M[2, 2] = Math.Cos(R);
+
+            MultMat(M);
+            AtualizaVertices();
+        }
+
+        public void RotacionaZ(double R)
+        {
+            R = (R * Math.PI) / 180;
+
+            double[,] M = NovaMatriz();
+            M[0, 0] = Math.Cos(R);
+            M[0, 1] = -Math.Sin(R);
+            M[1, 0] = Math.Sin(R);
+            M[1, 1] = Math.Cos(R);
+
+            MultMat(M);
+            AtualizaVertices();
+        }
+
+        public void RotacionaY(double R)
+        {
+            R = (R * Math.PI) / 180;
+
+            double[,] M = NovaMatriz();
+            M[0, 0] = Math.Cos(R);
+            M[2, 0] = -Math.Sin(R);
+            M[0, 2] = Math.Sin(R);
+            M[2, 2] = Math.Cos(R);
+
+            MultMat(M);
+            AtualizaVertices();
+        }
+
         public void Escala(double Sx, double Sy, double Sz)
         {
-            double[,] M = NovaMatriz(); M[0, 0] = Sx; M[1, 1] = Sy;
-
-            //X e Y médio
-            /*double Mx = 0, My = 0;
-            for (int i = 0; i < Vertices.Count; i++)
-            {
-                Mx += Vertices[i].X;
-                My += Vertices[i].Y;
-            }
-            Mx = Mx / Vertices.Count;
-            My = My / Vertices.Count;*/
-
-            // Translada(Mx, My);
+            //double[,] M = NovaMatriz(); M[0, 0] = Sx; M[1, 1] = Sy;                        
+            double[,] M = NovaMatriz(); M[0, 0] = Sx; M[1, 1] = Sy; M[2, 2] = Sy;
             MultMat(M);
-            //Translada(-Mx, -My);
             AtualizaVertices();
         }
 
@@ -87,8 +118,9 @@ namespace Objetos_3D
                 {
                     soma = 0;
                     for (int k = 0; k < 4; k++)
+                        //soma += MA[k, c] * M[l, k];
                         soma += MA[l, k] * M[k, c];
-                    this.MA[l, c] = soma;
+                        this.MA[l, c] = soma;
                 }
             }
         }        
