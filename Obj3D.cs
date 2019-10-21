@@ -109,7 +109,7 @@ namespace Objetos_3D
             M[0, 0] = M[1, 1] = M[2, 2] = M[3,3] = 1;
             return M;
         }
-        private void MultMat(double[,] M)
+        /*private void MultMat(double[,] M)
         {
             double soma = 0;
             for (int l = 0; l < 4; l++)
@@ -118,12 +118,36 @@ namespace Objetos_3D
                 {
                     soma = 0;
                     for (int k = 0; k < 4; k++)
-                        //soma += MA[k, c] * M[l, k];
-                        soma += MA[l, k] * M[k, c];
+                        soma += MA[k, c] * M[l, k];
+                        //soma += MA[l, k] * M[k, c];
                         this.MA[l, c] = soma;
                 }
             }
-        }        
+        }*/
+        
+        private void MultMat(double[,] M)
+        {
+            double soma = 0;
+            double[,] aux = NovaMatriz();
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    soma = 0;
+                    for (int k = 0; k < 4; k++)
+                        soma += M[k, j] * MA[i, k]; 
+
+
+                    aux[i, j] = soma;
+                }
+            }
+            this.MA = null;
+            this.MA = aux;
+        }
+
+
+
         private void AtualizaVertices()
         {
             Vertice V, newV;
@@ -133,9 +157,9 @@ namespace Objetos_3D
             {
                 newV = new Vertice();
                 V = Vertices[i];
-                newV.X = (int)((V.X * MA[0, 0]) + (V.Y * MA[0, 1]) + (V.Z * MA[0, 2]) + MA[0, 3]);
-                newV.Y = (int)((V.X * MA[1, 0]) + (V.Y * MA[1, 1]) + (V.Z * MA[1, 2]) + MA[1, 3]);
-                newV.Z = (int)((V.X * MA[2, 0]) + (V.Y * MA[2, 1]) + (V.Z * MA[2, 2]) + MA[2, 3]);
+                newV.X = ((V.X * MA[0, 0]) + (V.Y * MA[0, 1]) + (V.Z * MA[0, 2]) + MA[0, 3]);
+                newV.Y = ((V.X * MA[1, 0]) + (V.Y * MA[1, 1]) + (V.Z * MA[1, 2]) + MA[1, 3]);
+                newV.Z = ((V.X * MA[2, 0]) + (V.Y * MA[2, 1]) + (V.Z * MA[2, 2]) + MA[2, 3]);
                 this.VerticesAtuais.Add(newV);
             }
         }

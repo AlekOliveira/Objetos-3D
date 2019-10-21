@@ -16,8 +16,8 @@ namespace Objetos_3D
             //Bitmap b = new Bitmap(pbx.Image);
             int declive = 1;
             int dx, dy, incNE, incE, d, x, y;
-            dx = p2.X - p1.X;
-            dy = p2.Y - p1.Y;
+            dx = (int)(p2.X - p1.X);
+            dy = (int)(p2.Y - p1.Y);
             if (Math.Abs(dx) > Math.Abs(dy))
             {
                 if (p1.X > p2.X)
@@ -33,8 +33,8 @@ namespace Objetos_3D
                 incE = 2 * dy;
                 incNE = 2 * (dy - dx);
                 d = incNE;
-                y = p1.Y;
-                for (x = p1.X; x <= p2.X; ++x)
+                y = (int)p1.Y;
+                for (x = (int)p1.X; x <= p2.X; ++x)
                 {
                     b.SetPixel(x, y, c);
                     if (d < 0)
@@ -63,8 +63,8 @@ namespace Objetos_3D
                 incE = 2 * dx;
                 incNE = 2 * (dx - dy);
                 d = incNE;
-                x = p1.X;
-                for (y = p1.Y; y <= p2.Y; ++y)
+                x = (int)p1.X;
+                for (y = (int)p1.Y; y <= p2.Y; ++y)
                 {
                     b.SetPixel(x, y, c);
                     if (d < 0)

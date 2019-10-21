@@ -212,7 +212,7 @@ namespace Objetos_3D
             Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
             pbx.Image = (Image)Dbmp.Bitmap;
             
-            Objeto3D.RotacionaX(10.0);
+            Objeto3D.RotacionaX(10);
             Objeto3D.DesenhaFaces(Dbmp);
             pbx.Refresh();
         }
@@ -224,7 +224,7 @@ namespace Objetos_3D
             Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
             pbx.Image = (Image)Dbmp.Bitmap;
 
-            Objeto3D.RotacionaZ(10.0);
+            Objeto3D.RotacionaZ(10);
             Objeto3D.DesenhaFaces(Dbmp);
             pbx.Refresh();
         }
@@ -236,7 +236,7 @@ namespace Objetos_3D
             Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
             pbx.Image = (Image)Dbmp.Bitmap;
 
-            Objeto3D.RotacionaY(10.0);
+            Objeto3D.RotacionaY(7);
             Objeto3D.DesenhaFaces(Dbmp);
             pbx.Refresh();
         }
