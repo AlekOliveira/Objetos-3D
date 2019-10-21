@@ -30,7 +30,13 @@ namespace Objetos_3D
             this.pbx.MouseWheel += ScrollMouse;
         }
 
-
+        private void AtualizaImagem()
+        {
+            pbx.Image = null;
+            Dbmp.Dispose();
+            Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
+            pbx.Image = (Image)Dbmp.Bitmap;
+        }
 
 
         private void BtAbrir_Click(object sender, EventArgs e)
@@ -68,13 +74,9 @@ namespace Objetos_3D
                                 Faces.Add(new Face(int.Parse(split[0]), int.Parse(split[1]), int.Parse(split[2])));
                             }
                     }
-                    pbx.Image = null;
-                    Dbmp.Dispose();
-                    Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
-                    pbx.Image = (Image)Dbmp.Bitmap;
-
+                    AtualizaImagem();
                     Objeto3D = new Obj3D(Vertices, Faces); //talvez vire lista
-                    Objeto3D.DesenhaFaces(Dbmp);
+                    Objeto3D.DesenhaFaces(Dbmp, Color.Purple);
                     pbx.Refresh();
                 }
                 catch (SecurityException ex)
@@ -95,56 +97,83 @@ namespace Objetos_3D
                 else//down
                     Objeto3D.Escala(0.9, 0.9, 0.9);
 
-                pbx.Image = null;
-                Dbmp.Dispose();
-                Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
-                pbx.Image = (Image)Dbmp.Bitmap;
-
-                Objeto3D.DesenhaFaces(Dbmp);
+                AtualizaImagem();
+                Objeto3D.DesenhaFaces(Dbmp, Color.Purple);
                 pbx.Refresh();
             }
         }
 
         private void Pbx_MouseMove(object sender, MouseEventArgs e)
         {
-            if (Objeto3D != null && e.Button == MouseButtons.Right)
-            {                                
-                label1.Text = "X: " + e.X.ToString() + "  Y:" + e.Y.ToString();
+            if(Objeto3D != null)
+                if (e.Button == MouseButtons.Right)
+                {                                
+                    //label1.Text = "X: " + e.X.ToString() + "  Y:" + e.Y.ToString();
 
-                pbx.Image = null;
-                Dbmp.Dispose();
-                Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
-                pbx.Image = (Image)Dbmp.Bitmap;  
+                    AtualizaImagem();
 
-                Objeto3D.Translada(e.X - posi.X, e.Y - posi.Y, 0);
-                Objeto3D.DesenhaFaces(Dbmp);
-                pbx.Refresh();
-                posi = e.Location;                
-            }
+                    Objeto3D.Translada(e.X - posi.X, e.Y - posi.Y, 0);
+                    Objeto3D.DesenhaFaces(Dbmp, Color.Purple);
+                    pbx.Refresh();
+                    posi = e.Location;                
+                }
+                else if(e.Button == MouseButtons.Left)
+                {
+                    AtualizaImagem();
+                    if (e.X > posi.X)
+                        Objeto3D.RotacionaY(1);
+                    if(e.X < posi.X)
+                        Objeto3D.RotacionaY(-1);                   
+                    if(e.Y > posi.Y)
+                        Objeto3D.RotacionaX(-1);
+                    if (e.Y < posi.Y)
+                        Objeto3D.RotacionaX(1);
+
+                    Objeto3D.DesenhaFaces(Dbmp, Color.Purple);
+                    pbx.Refresh();
+                }
+            
         }
         private void Pbx_MouseDown(object sender, MouseEventArgs e)
         {
             posi = new Point(e.X, e.Y);
-        }
-        
+        }       
 
-        /* double maiorY()
+        private void MetroTile2_Click(object sender, EventArgs e)
         {
-            double maior = 0;
-            foreach (Point p in Objeto3D.VerticesAtuais)            
-                if (p.Y > maior)
-                    maior = p.Y;
+            AtualizaImagem();
             
-            return maior;
+            Objeto3D.RotacionaX(10);
+            Objeto3D.DesenhaFaces(Dbmp, Color.Purple);
+            pbx.Refresh();
         }
-        private double menorY()
+
+        private void MetroTile3_Click(object sender, EventArgs e)
         {
-            double menor = 999999;
-            foreach (Point p in Objeto3D.VerticesAtuais)
-                if (p.Y < menor)
-                    menor = p.Y;
-            return menor;
-        }*/
+            AtualizaImagem();
+
+            Objeto3D.RotacionaZ(10);
+            Objeto3D.DesenhaFaces(Dbmp, Color.Purple);
+            pbx.Refresh();
+        }
+
+        private void MetroTile4_Click(object sender, EventArgs e)
+        {
+            AtualizaImagem();
+
+            Objeto3D.RotacionaY(7);
+            Objeto3D.DesenhaFaces(Dbmp, Color.Purple);
+            pbx.Refresh();
+        }
+
+
+
+
+
+
+
+
+
 
 
         private void MetroTile1_Click(object sender, EventArgs e)
@@ -205,41 +234,24 @@ namespace Objetos_3D
 
         }
 
-        private void MetroTile2_Click(object sender, EventArgs e)
+        /* double maiorY()
         {
-            pbx.Image = null;
-            Dbmp.Dispose();
-            Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
-            pbx.Image = (Image)Dbmp.Bitmap;
+            double maior = 0;
+            foreach (Point p in Objeto3D.VerticesAtuais)            
+                if (p.Y > maior)
+                    maior = p.Y;
             
-            Objeto3D.RotacionaX(10);
-            Objeto3D.DesenhaFaces(Dbmp);
-            pbx.Refresh();
+            return maior;
         }
-
-        private void MetroTile3_Click(object sender, EventArgs e)
+        private double menorY()
         {
-            pbx.Image = null;
-            Dbmp.Dispose();
-            Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
-            pbx.Image = (Image)Dbmp.Bitmap;
+            double menor = 999999;
+            foreach (Point p in Objeto3D.VerticesAtuais)
+                if (p.Y < menor)
+                    menor = p.Y;
+            return menor;
+        }*/
 
-            Objeto3D.RotacionaZ(10);
-            Objeto3D.DesenhaFaces(Dbmp);
-            pbx.Refresh();
-        }
-
-        private void MetroTile4_Click(object sender, EventArgs e)
-        {
-            pbx.Image = null;
-            Dbmp.Dispose();
-            Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
-            pbx.Image = (Image)Dbmp.Bitmap;
-
-            Objeto3D.RotacionaY(7);
-            Objeto3D.DesenhaFaces(Dbmp);
-            pbx.Refresh();
-        }
     }
 }
 

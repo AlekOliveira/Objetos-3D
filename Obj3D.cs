@@ -28,7 +28,7 @@ namespace Objetos_3D
         }
 
         //METODOS PUBLICOS
-        public void DesenhaFaces(DirectBitmap bmp)
+        public void DesenhaFaces(DirectBitmap bmp, Color cor)
         {
             Vertice v1, v2, v3;
             int dx = bmp.Width/2;
@@ -38,9 +38,9 @@ namespace Objetos_3D
                 v1 = new Vertice(VerticesAtuais[f.Idx0].X + dx, VerticesAtuais[f.Idx0].Y + dy, 0);
                 v2 = new Vertice(VerticesAtuais[f.Idx1].X + dx, VerticesAtuais[f.Idx1].Y + dy, 0);
                 v3 = new Vertice(VerticesAtuais[f.Idx2].X + dx, VerticesAtuais[f.Idx2].Y + dy, 0);               
-                Primitivas.Bresenhan(v1, v2, bmp, Color.White);               
-                Primitivas.Bresenhan(v2, v3, bmp, Color.White);               
-                Primitivas.Bresenhan(v3, v1, bmp, Color.White);
+                Primitivas.Bresenhan(v1, v2, bmp, cor);               
+                Primitivas.Bresenhan(v2, v3, bmp, cor);               
+                Primitivas.Bresenhan(v3, v1, bmp, cor);
             }
         }
 
@@ -95,8 +95,7 @@ namespace Objetos_3D
         }
 
         public void Escala(double Sx, double Sy, double Sz)
-        {
-            //double[,] M = NovaMatriz(); M[0, 0] = Sx; M[1, 1] = Sy;                        
+        {                       
             double[,] M = NovaMatriz(); M[0, 0] = Sx; M[1, 1] = Sy; M[2, 2] = Sy;
             MultMat(M);
             AtualizaVertices();
@@ -109,21 +108,7 @@ namespace Objetos_3D
             M[0, 0] = M[1, 1] = M[2, 2] = M[3,3] = 1;
             return M;
         }
-        /*private void MultMat(double[,] M)
-        {
-            double soma = 0;
-            for (int l = 0; l < 4; l++)
-            {
-                for (int c = 0; c < 4; c++)
-                {
-                    soma = 0;
-                    for (int k = 0; k < 4; k++)
-                        soma += MA[k, c] * M[l, k];
-                        //soma += MA[l, k] * M[k, c];
-                        this.MA[l, c] = soma;
-                }
-            }
-        }*/
+        
         
         private void MultMat(double[,] M)
         {
@@ -142,11 +127,9 @@ namespace Objetos_3D
                     aux[i, j] = soma;
                 }
             }
-            this.MA = null;
             this.MA = aux;
         }
-
-
+        
 
         private void AtualizaVertices()
         {
