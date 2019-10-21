@@ -168,14 +168,6 @@ namespace Objetos_3D
 
 
 
-
-
-
-
-
-
-
-
         private void MetroTile1_Click(object sender, EventArgs e)
         {/*
             double incX, yMax, yMin, xMin, xMax;
