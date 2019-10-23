@@ -37,10 +37,14 @@ namespace Objetos_3D
             {
                 v1 = new Vertice(VerticesAtuais[f.Idx0].X + dx, VerticesAtuais[f.Idx0].Y + dy, 0);
                 v2 = new Vertice(VerticesAtuais[f.Idx1].X + dx, VerticesAtuais[f.Idx1].Y + dy, 0);
-                v3 = new Vertice(VerticesAtuais[f.Idx2].X + dx, VerticesAtuais[f.Idx2].Y + dy, 0);               
-                Primitivas.Bresenhan(v1, v2, bmp, cor);               
-                Primitivas.Bresenhan(v2, v3, bmp, cor);               
-                Primitivas.Bresenhan(v3, v1, bmp, cor);
+                v3 = new Vertice(VerticesAtuais[f.Idx2].X + dx, VerticesAtuais[f.Idx2].Y + dy, 0);
+                if (f.calculaNormal(VerticesAtuais))
+                {
+                    Primitivas.Bresenhan(v1, v2, bmp, cor);
+                    Primitivas.Bresenhan(v2, v3, bmp, cor);
+                    Primitivas.Bresenhan(v3, v1, bmp, cor);
+                }
+               
             }
         }
 
@@ -121,8 +125,8 @@ namespace Objetos_3D
                 {
                     soma = 0;
                     for (int k = 0; k < 4; k++)
-                        soma += M[k, j] * MA[i, k]; 
-
+                        //soma += M[k, j] * MA[i, k]; 
+                        soma += MA[i, k] * M[k, j] ;
 
                     aux[i, j] = soma;
                 }
