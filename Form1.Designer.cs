@@ -33,10 +33,18 @@
             this.btAbrir = new MetroFramework.Controls.MetroTile();
             this.pbx = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.ocultacao = new MetroFramework.Controls.MetroToggle();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pbxX = new System.Windows.Forms.PictureBox();
+            this.pbxY = new System.Windows.Forms.PictureBox();
+            this.pbxZ = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbx)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxZ)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -65,7 +73,7 @@
             this.pbx.Dock = System.Windows.Forms.DockStyle.Left;
             this.pbx.Location = new System.Drawing.Point(20, 60);
             this.pbx.Name = "pbx";
-            this.pbx.Size = new System.Drawing.Size(974, 726);
+            this.pbx.Size = new System.Drawing.Size(850, 750);
             this.pbx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbx.TabIndex = 3;
             this.pbx.TabStop = false;
@@ -82,48 +90,108 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "X:  Y:";
             // 
-            // metroTile1
-            // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(1000, 324);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(226, 462);
-            this.metroTile1.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroTile1.TabIndex = 6;
-            this.metroTile1.UseSelectable = true;
-            this.metroTile1.Click += new System.EventHandler(this.MetroTile1_Click);
-            // 
             // ocultacao
             // 
             this.ocultacao.AutoSize = true;
-            this.ocultacao.Location = new System.Drawing.Point(1000, 102);
+            this.ocultacao.Location = new System.Drawing.Point(1171, 83);
             this.ocultacao.Name = "ocultacao";
             this.ocultacao.Size = new System.Drawing.Size(80, 17);
             this.ocultacao.Style = MetroFramework.MetroColorStyle.Purple;
             this.ocultacao.TabIndex = 8;
             this.ocultacao.Text = "Off";
-            this.ocultacao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ocultacao.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ocultacao.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ocultacao.UseSelectable = true;
             this.ocultacao.CheckedChanged += new System.EventHandler(this.Ocultacao_CheckedChanged);
             // 
-            // metroLabel1
+            // label2
             // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(1000, 80);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(104, 19);
-            this.metroLabel1.TabIndex = 9;
-            this.metroLabel1.Text = "Backface Culling";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(1167, 60);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(127, 20);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Backface Culling";
+            // 
+            // pbxX
+            // 
+            this.pbxX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.pbxX.Location = new System.Drawing.Point(897, 60);
+            this.pbxX.Name = "pbxX";
+            this.pbxX.Size = new System.Drawing.Size(240, 240);
+            this.pbxX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxX.TabIndex = 10;
+            this.pbxX.TabStop = false;
+            // 
+            // pbxY
+            // 
+            this.pbxY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.pbxY.Location = new System.Drawing.Point(897, 315);
+            this.pbxY.Name = "pbxY";
+            this.pbxY.Size = new System.Drawing.Size(240, 240);
+            this.pbxY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxY.TabIndex = 11;
+            this.pbxY.TabStop = false;
+            // 
+            // pbxZ
+            // 
+            this.pbxZ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.pbxZ.Location = new System.Drawing.Point(897, 570);
+            this.pbxZ.Name = "pbxZ";
+            this.pbxZ.Size = new System.Drawing.Size(240, 240);
+            this.pbxZ.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxZ.TabIndex = 12;
+            this.pbxZ.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Control;
+            this.label3.Location = new System.Drawing.Point(893, 280);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(95, 20);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Frontal(X,Y)";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.Control;
+            this.label4.Location = new System.Drawing.Point(893, 535);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 20);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Superior(X,Z)";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.Control;
+            this.label5.Location = new System.Drawing.Point(893, 789);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 20);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Lateral(Y,Z)";
             // 
             // Fprincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1246, 806);
-            this.Controls.Add(this.metroLabel1);
+            this.ClientSize = new System.Drawing.Size(1361, 830);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.pbxZ);
+            this.Controls.Add(this.pbxY);
+            this.Controls.Add(this.pbxX);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.ocultacao);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.pbx);
             this.Controls.Add(this.btAbrir);
             this.Name = "Fprincipal";
@@ -132,6 +200,9 @@
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.TransparencyKey = System.Drawing.Color.LavenderBlush;
             ((System.ComponentModel.ISupportInitialize)(this.pbx)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxZ)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,9 +214,14 @@
         private MetroFramework.Controls.MetroTile btAbrir;
         private System.Windows.Forms.PictureBox pbx;
         private System.Windows.Forms.Label label1;
-        private MetroFramework.Controls.MetroTile metroTile1;
         private MetroFramework.Controls.MetroToggle ocultacao;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pbxX;
+        private System.Windows.Forms.PictureBox pbxY;
+        private System.Windows.Forms.PictureBox pbxZ;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 

@@ -24,10 +24,22 @@ namespace Objetos_3D
 
             Dbmp= new DirectBitmap(pbx.Width, pbx.Height);
             pbx.Image = (Image)Dbmp.Bitmap;
+            pbxX.Image = (Image)Dbmp.Bitmap;
+            pbxY.Image = (Image)Dbmp.Bitmap;
+            pbxZ.Image = (Image)Dbmp.Bitmap;
+
             openFileDialog1.Filter = "Objetos 3d|*.obj";
             openFileDialog1.FileName = "Selecione um Objeto";
-            openFileDialog1.Title = "Abrir Arquivos";
+            openFileDialog1.Title = "Abrir Arquivos";            
             this.pbx.MouseWheel += ScrollMouse;
+        }
+
+        private void RefreshPbx()
+        {
+            pbx.Refresh();
+            pbxX.Refresh();
+            pbxY.Refresh();
+            pbxZ.Refresh();
         }
 
         private void AtualizaImagem()
@@ -36,6 +48,9 @@ namespace Objetos_3D
             Dbmp.Dispose();
             Dbmp = new DirectBitmap(pbx.Width, pbx.Width);
             pbx.Image = (Image)Dbmp.Bitmap;
+            pbxX.Image = (Image)Dbmp.Bitmap;
+            pbxY.Image = (Image)Dbmp.Bitmap;
+            pbxZ.Image = (Image)Dbmp.Bitmap;
         }
 
 
@@ -77,7 +92,8 @@ namespace Objetos_3D
                     AtualizaImagem();
                     Objeto3D = new Obj3D(Vertices, Faces); //talvez vire lista
                     Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
-                    pbx.Refresh();
+                    //pbx.Refresh();
+                    RefreshPbx();
                 }
                 catch (SecurityException ex)
                 {
@@ -99,7 +115,8 @@ namespace Objetos_3D
 
                 AtualizaImagem();
                 Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
-                pbx.Refresh();
+                //pbx.Refresh();
+                RefreshPbx();
             }
         }
 
@@ -114,7 +131,8 @@ namespace Objetos_3D
 
                     Objeto3D.Translada(e.X - posi.X, e.Y - posi.Y, 0);
                     Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
-                    pbx.Refresh();
+                    //pbx.Refresh();
+                    RefreshPbx();
                     posi = e.Location;                
                 }
                 else if(e.Button == MouseButtons.Left)
@@ -130,7 +148,8 @@ namespace Objetos_3D
                         Objeto3D.RotacionaX(1);
 
                     Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
-                    pbx.Refresh();
+                    //pbx.Refresh();
+                    RefreshPbx();
                 }
             
         }
@@ -145,7 +164,8 @@ namespace Objetos_3D
             
             Objeto3D.RotacionaX(10);
             Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
-            pbx.Refresh();
+            //pbx.Refresh();
+            RefreshPbx();
         }
 
         private void MetroTile3_Click(object sender, EventArgs e)
@@ -154,7 +174,8 @@ namespace Objetos_3D
 
             Objeto3D.RotacionaZ(10);
             Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
-            pbx.Refresh();
+            //pbx.Refresh();
+            RefreshPbx();
         }
 
         private void MetroTile4_Click(object sender, EventArgs e)
@@ -163,91 +184,16 @@ namespace Objetos_3D
 
             Objeto3D.RotacionaY(7);
             Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
-            pbx.Refresh();
-        }
-
-        private void MetroTile1_Click(object sender, EventArgs e)
-        {/*
-            double incX, yMax, yMin, xMin, xMax;
-            //double meY = menorY();
-            double maY = maiorY();
-            List<ET>[] et = new List<ET>[(int)(maY - meY) + 1];
-            int idxMin = 999999;
-            int idxMax = 0;
-
-            for (int i = 0; i < Objeto3D.VerticesAtuais.Count - 1; i ++)
-            {
-
-                yMin = Math.Min(Objeto3D.VerticesAtuais[i].Y, Objeto3D.VerticesAtuais[i + 1].Y);
-                yMax = Math.Max(Objeto3D.VerticesAtuais[i].Y, Objeto3D.VerticesAtuais[i + 1].Y);
-                xMin = Math.Min(Objeto3D.VerticesAtuais[i].X, Objeto3D.VerticesAtuais[i + 1].X);                
-                xMax = Math.Max(Objeto3D.VerticesAtuais[i].X, Objeto3D.VerticesAtuais[i + 1].X);
-
-                incX = yMax - yMin;
-
-                if (incX != 0)
-                    incX = xMax - xMin / incX;
-
-                if (et[(int)(yMin - meY)] == null)
-                {
-                    et[(int)(yMin - meY)] = new List<ET>();
-                    idxMin = Math.Min((int)(yMin - meY), idxMin);
-                    idxMax = Math.Max((int)(yMin - meY), idxMin);
-                }                    
-                et[(int)(yMin - meY)].Add(new ET(incX, yMax, xMin));
-            }
-
-            yMin = Math.Min(Objeto3D.VerticesAtuais[0].Y, Objeto3D.VerticesAtuais[Objeto3D.VerticesAtuais.Count - 1].Y);
-            yMax = Math.Max(Objeto3D.VerticesAtuais[0].Y, Objeto3D.VerticesAtuais[Objeto3D.VerticesAtuais.Count - 1].Y);
-            xMin = Math.Min(Objeto3D.VerticesAtuais[0].X, Objeto3D.VerticesAtuais[Objeto3D.VerticesAtuais.Count - 1].X);
-            xMax = Math.Max(Objeto3D.VerticesAtuais[0].X, Objeto3D.VerticesAtuais[Objeto3D.VerticesAtuais.Count - 1].X);
-
-            incX = yMax - yMin;
-
-            if (incX != 0)
-                incX = xMax - xMin / incX;
-
-            if (et[(int)(yMin - meY)] == null)
-            {
-                et[(int)(yMin - meY)] = new List<ET>();
-                idxMin = Math.Min((int)(yMin - meY), idxMin);
-                idxMax = Math.Max((int)(yMin - meY), idxMin);
-            }                
-            et[(int)(yMin - meY)].Add(new ET(incX, yMax, xMin));
-
-            List<ET> aet = new List<ET>();
-
-            foreach (ET x in et[idxMin])
-            {
-                aet.Add(x);
-            }*/
-
-        }
+            //pbx.Refresh();
+            RefreshPbx();
+        }      
 
         private void Ocultacao_CheckedChanged(object sender, EventArgs e)
         {
             AtualizaImagem();
             Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
-        }
-
-        /* double maiorY()
-        {
-            double maior = 0;
-            foreach (Point p in Objeto3D.VerticesAtuais)            
-                if (p.Y > maior)
-                    maior = p.Y;
-            
-            return maior;
-        }
-        private double menorY()
-        {
-            double menor = 999999;
-            foreach (Point p in Objeto3D.VerticesAtuais)
-                if (p.Y < menor)
-                    menor = p.Y;
-            return menor;
-        }*/
-
+            RefreshPbx();
+        }      
     }
 }
 
