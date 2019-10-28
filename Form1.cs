@@ -76,7 +76,7 @@ namespace Objetos_3D
                     }
                     AtualizaImagem();
                     Objeto3D = new Obj3D(Vertices, Faces); //talvez vire lista
-                    Objeto3D.DesenhaFaces(Dbmp, Color.Purple);
+                    Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
                     pbx.Refresh();
                 }
                 catch (SecurityException ex)
@@ -98,7 +98,7 @@ namespace Objetos_3D
                     Objeto3D.Escala(0.9, 0.9, 0.9);
 
                 AtualizaImagem();
-                Objeto3D.DesenhaFaces(Dbmp, Color.Purple);
+                Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
                 pbx.Refresh();
             }
         }
@@ -113,7 +113,7 @@ namespace Objetos_3D
                     AtualizaImagem();
 
                     Objeto3D.Translada(e.X - posi.X, e.Y - posi.Y, 0);
-                    Objeto3D.DesenhaFaces(Dbmp, Color.Purple);
+                    Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
                     pbx.Refresh();
                     posi = e.Location;                
                 }
@@ -129,7 +129,7 @@ namespace Objetos_3D
                     if (e.Y < posi.Y)
                         Objeto3D.RotacionaX(1);
 
-                    Objeto3D.DesenhaFaces(Dbmp, Color.Purple);
+                    Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
                     pbx.Refresh();
                 }
             
@@ -144,7 +144,7 @@ namespace Objetos_3D
             AtualizaImagem();
             
             Objeto3D.RotacionaX(10);
-            Objeto3D.DesenhaFaces(Dbmp, Color.Purple);
+            Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
             pbx.Refresh();
         }
 
@@ -153,7 +153,7 @@ namespace Objetos_3D
             AtualizaImagem();
 
             Objeto3D.RotacionaZ(10);
-            Objeto3D.DesenhaFaces(Dbmp, Color.Purple);
+            Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
             pbx.Refresh();
         }
 
@@ -162,11 +162,9 @@ namespace Objetos_3D
             AtualizaImagem();
 
             Objeto3D.RotacionaY(7);
-            Objeto3D.DesenhaFaces(Dbmp, Color.Purple);
+            Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
             pbx.Refresh();
         }
-
-
 
         private void MetroTile1_Click(object sender, EventArgs e)
         {/*
@@ -224,6 +222,12 @@ namespace Objetos_3D
                 aet.Add(x);
             }*/
 
+        }
+
+        private void Ocultacao_CheckedChanged(object sender, EventArgs e)
+        {
+            AtualizaImagem();
+            Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
         }
 
         /* double maiorY()

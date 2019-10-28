@@ -34,7 +34,8 @@
             this.pbx = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
-            this.metroToggle1 = new MetroFramework.Controls.MetroToggle();
+            this.ocultacao = new MetroFramework.Controls.MetroToggle();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pbx)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,31 +85,43 @@
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(1000, 60);
+            this.metroTile1.Location = new System.Drawing.Point(1000, 324);
             this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(226, 726);
+            this.metroTile1.Size = new System.Drawing.Size(226, 462);
             this.metroTile1.Style = MetroFramework.MetroColorStyle.Purple;
             this.metroTile1.TabIndex = 6;
             this.metroTile1.UseSelectable = true;
             this.metroTile1.Click += new System.EventHandler(this.MetroTile1_Click);
             // 
-            // metroToggle1
+            // ocultacao
             // 
-            this.metroToggle1.AutoSize = true;
-            this.metroToggle1.Location = new System.Drawing.Point(275, 26);
-            this.metroToggle1.Name = "metroToggle1";
-            this.metroToggle1.Size = new System.Drawing.Size(80, 17);
-            this.metroToggle1.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroToggle1.TabIndex = 8;
-            this.metroToggle1.Text = "Off";
-            this.metroToggle1.UseSelectable = true;
+            this.ocultacao.AutoSize = true;
+            this.ocultacao.Location = new System.Drawing.Point(1000, 102);
+            this.ocultacao.Name = "ocultacao";
+            this.ocultacao.Size = new System.Drawing.Size(80, 17);
+            this.ocultacao.Style = MetroFramework.MetroColorStyle.Purple;
+            this.ocultacao.TabIndex = 8;
+            this.ocultacao.Text = "Off";
+            this.ocultacao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ocultacao.UseSelectable = true;
+            this.ocultacao.CheckedChanged += new System.EventHandler(this.Ocultacao_CheckedChanged);
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(1000, 80);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(104, 19);
+            this.metroLabel1.TabIndex = 9;
+            this.metroLabel1.Text = "Backface Culling";
             // 
             // Fprincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1246, 806);
-            this.Controls.Add(this.metroToggle1);
+            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.ocultacao);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.pbx);
@@ -131,7 +144,8 @@
         private System.Windows.Forms.PictureBox pbx;
         private System.Windows.Forms.Label label1;
         private MetroFramework.Controls.MetroTile metroTile1;
-        private MetroFramework.Controls.MetroToggle metroToggle1;
+        private MetroFramework.Controls.MetroToggle ocultacao;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
     }
 }
 

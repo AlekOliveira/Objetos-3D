@@ -8,8 +8,7 @@ namespace Objetos_3D
 {
     class Face
     {
-        private int[] Faces = new int[3];
-       
+        private int[] Faces = new int[3];       
 
         public Face(int a, int b, int c)
         {
@@ -18,13 +17,9 @@ namespace Objetos_3D
             Faces[2] = c;
         }
 
-
-
         public int Idx0 { get => Faces[0] -1; set => Faces[0] = value; }
         public int Idx1 { get => Faces[1] -1; set => Faces[1] = value; }
-        public int Idx2 { get => Faces[2] -1; set => Faces[2] = value; }
-       
-
+        public int Idx2 { get => Faces[2] -1; set => Faces[2] = value; }  
 
 
         public bool calculaNormal(List<Vertice> Vertices)
@@ -41,7 +36,6 @@ namespace Objetos_3D
             VN.X /= moduloVN;
             VN.Y /= moduloVN;
             VN.Z /= moduloVN;
-
 
             if (VN.Z >= 0)
                 return true;
