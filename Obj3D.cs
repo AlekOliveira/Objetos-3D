@@ -12,10 +12,14 @@ namespace Objetos_3D
     {
         public List<Vertice> Vertices = new List<Vertice>();
         public List<Vertice> VerticesAtuais = new List<Vertice>();
-
-        //public List<Point> VerticesAtuais = new List<Point>();
         public List<Face> Faces = new List<Face>();
+        public List<Vetor> NormaisFaces = new List<Vetor>();
+        //Lista de normais das faces
+        //Lista de normais dos vértices
+
+
         private double[,] MA = new double[4,4];
+        public int dx = 425, dy = 375;
 
         
 
@@ -31,8 +35,6 @@ namespace Objetos_3D
         public void DesenhaFaces(DirectBitmap bmp, Color cor, bool visivel)
         {
             Vertice v1, v2, v3;
-            int dx = bmp.Width/2;
-            int dy = bmp.Height/2;
             foreach (Face f in this.Faces)
             {
                 v1 = new Vertice(VerticesAtuais[f.Idx0].X + dx, VerticesAtuais[f.Idx0].Y + dy, 0);
@@ -74,6 +76,19 @@ namespace Objetos_3D
             M[2, 1] = Math.Sin(R);
             M[2, 2] = Math.Cos(R);
 
+            double mx = 0, my = 0, mz = 0;
+            for (int i = 0; i < VerticesAtuais.Count; i ++)
+            {
+                mx += VerticesAtuais[i].X;
+                my += VerticesAtuais[i].Y;
+                mz += VerticesAtuais[i].Z;
+            }
+            mx /= VerticesAtuais.Count;
+            my /= VerticesAtuais.Count;
+            mz /= VerticesAtuais.Count;
+
+
+            
             MultMat(M);
             AtualizaVertices();
         }

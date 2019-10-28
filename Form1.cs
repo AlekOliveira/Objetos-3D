@@ -91,8 +91,7 @@ namespace Objetos_3D
                     }
                     AtualizaImagem();
                     Objeto3D = new Obj3D(Vertices, Faces); //talvez vire lista
-                    Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
-                    //pbx.Refresh();
+                    Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
                     RefreshPbx();
                 }
                 catch (SecurityException ex)
@@ -114,8 +113,7 @@ namespace Objetos_3D
                     Objeto3D.Escala(0.9, 0.9, 0.9);
 
                 AtualizaImagem();
-                Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
-                //pbx.Refresh();
+                Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
                 RefreshPbx();
             }
         }
@@ -130,8 +128,7 @@ namespace Objetos_3D
                     AtualizaImagem();
 
                     Objeto3D.Translada(e.X - posi.X, e.Y - posi.Y, 0);
-                    Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
-                    //pbx.Refresh();
+                    Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
                     RefreshPbx();
                     posi = e.Location;                
                 }
@@ -147,8 +144,7 @@ namespace Objetos_3D
                     if (e.Y < posi.Y)
                         Objeto3D.RotacionaX(1);
 
-                    Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
-                    //pbx.Refresh();
+                    Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
                     RefreshPbx();
                 }
             
@@ -163,8 +159,7 @@ namespace Objetos_3D
             AtualizaImagem();
             
             Objeto3D.RotacionaX(10);
-            Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
-            //pbx.Refresh();
+            Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
             RefreshPbx();
         }
 
@@ -173,8 +168,7 @@ namespace Objetos_3D
             AtualizaImagem();
 
             Objeto3D.RotacionaZ(10);
-            Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
-            //pbx.Refresh();
+            Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
             RefreshPbx();
         }
 
@@ -183,17 +177,22 @@ namespace Objetos_3D
             AtualizaImagem();
 
             Objeto3D.RotacionaY(7);
-            Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
-            //pbx.Refresh();
+            Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
             RefreshPbx();
         }      
 
         private void Ocultacao_CheckedChanged(object sender, EventArgs e)
         {
             AtualizaImagem();
-            Objeto3D.DesenhaFaces(Dbmp, Color.Purple, ocultacao.Checked);
+            Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
             RefreshPbx();
-        }      
+        }
+
+        private void MetroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Flat - Usaa normal da face
+            // Gourard - normal do vetor (A = (n1+n2+n3+n4)), depois sair varrendo a listas de normais dos vertices
+        }
     }
 }
 
