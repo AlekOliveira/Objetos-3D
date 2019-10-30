@@ -42,7 +42,7 @@ namespace Objetos_3D
                 v3 = new Vertice(VerticesAtuais[f.Idx2].X + dx, VerticesAtuais[f.Idx2].Y + dy, 0);
                 if (visivel)
                 {
-                    if (f.calculaNormal(VerticesAtuais))
+                    if (f.calculaNormal(VerticesAtuais, NormaisFaces))
                     {
                         Primitivas.Bresenhan(v1, v2, bmp, cor);
                         Primitivas.Bresenhan(v2, v3, bmp, cor);
@@ -88,8 +88,9 @@ namespace Objetos_3D
             mz /= VerticesAtuais.Count;
 
 
-            
+            Translada(-mx, -my, 0);
             MultMat(M);
+            Translada(mx, my, 0);
             AtualizaVertices();
         }
 
@@ -148,8 +149,8 @@ namespace Objetos_3D
                 {
                     soma = 0;
                     for (int k = 0; k < 4; k++)
-                        //soma += M[k, j] * MA[i, k]; 
-                        soma += MA[i, k] * M[k, j] ;
+                        soma += M[k, j] * MA[i, k]; 
+                        //soma += MA[i, k] * M[k, j] ;
 
                     aux[i, j] = soma;
                 }

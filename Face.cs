@@ -8,7 +8,8 @@ namespace Objetos_3D
 {
     class Face
     {
-        private int[] Faces = new int[3];       
+        private int[] Faces = new int[3];
+        private Vetor vetNormal;
 
         public Face(int a, int b, int c)
         {
@@ -22,7 +23,7 @@ namespace Objetos_3D
         public int Idx2 { get => Faces[2] -1; set => Faces[2] = value; }  
 
 
-        public bool calculaNormal(List<Vertice> Vertices)
+        public bool calculaNormal(List<Vertice> Vertices, List<Vetor> Normais)
         {
             Vetor AB = new Vetor(Vertices[Idx1].X - Vertices[this.Idx0].X, Vertices[Idx1].Y - Vertices[this.Idx0].Y, Vertices[Idx1].Z - Vertices[this.Idx0].Z);
             Vetor AC = new Vetor(Vertices[Idx2].X - Vertices[this.Idx0].X, Vertices[Idx2].Y - Vertices[this.Idx0].Y, Vertices[Idx2].Z - Vertices[this.Idx0].Z);
@@ -32,10 +33,13 @@ namespace Objetos_3D
             VN.Y = AB.Z * AC.X - AB.X * AC.Z;
             VN.Z = AB.X * AC.Y - AB.Y * AC.X;
 
+
             double moduloVN = (Math.Pow(VN.X, 2) + Math.Pow(VN.Y, 2) + Math.Pow(VN.Z, 2));
             VN.X /= moduloVN;
             VN.Y /= moduloVN;
             VN.Z /= moduloVN;
+
+            vetNormal = new Vetor(VN.X, VN.Y, VN.Z);           
 
             if (VN.Z >= 0)
                 return true;

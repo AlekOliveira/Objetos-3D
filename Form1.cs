@@ -120,11 +120,10 @@ namespace Objetos_3D
 
         private void Pbx_MouseMove(object sender, MouseEventArgs e)
         {
-            if(Objeto3D != null)
+            label1.Text = "X: " + e.X.ToString() + "  Y:" + e.Y.ToString();
+            if (Objeto3D != null)
                 if (e.Button == MouseButtons.Right)
-                {                                
-                    //label1.Text = "X: " + e.X.ToString() + "  Y:" + e.Y.ToString();
-
+                {        
                     AtualizaImagem();
 
                     Objeto3D.Translada(e.X - posi.X, e.Y - posi.Y, 0);
@@ -136,13 +135,13 @@ namespace Objetos_3D
                 {
                     AtualizaImagem();
                     if (e.X > posi.X)
-                        Objeto3D.RotacionaY(1);
+                        Objeto3D.RotacionaY(2);
                     if(e.X < posi.X)
-                        Objeto3D.RotacionaY(-1);                   
+                        Objeto3D.RotacionaY(-2);                   
                     if(e.Y > posi.Y)
-                        Objeto3D.RotacionaX(-1);
+                        Objeto3D.RotacionaX(-2);
                     if (e.Y < posi.Y)
-                        Objeto3D.RotacionaX(1);
+                        Objeto3D.RotacionaX(2);
 
                     Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
                     RefreshPbx();
@@ -190,7 +189,7 @@ namespace Objetos_3D
 
         private void MetroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Flat - Usaa normal da face
+            // Flat - Usa normal da face
             // Gourard - normal do vetor (A = (n1+n2+n3+n4)), depois sair varrendo a listas de normais dos vertices
         }
     }
