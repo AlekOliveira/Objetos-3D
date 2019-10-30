@@ -122,7 +122,7 @@ namespace Objetos_3D
         {
             label1.Text = "X: " + e.X.ToString() + "  Y:" + e.Y.ToString();
             if (Objeto3D != null)
-                if (e.Button == MouseButtons.Right)
+                if (e.Button == MouseButtons.Right && (e.X != posi.X || e.Y != posi.Y))
                 {        
                     AtualizaImagem();
 
@@ -134,10 +134,10 @@ namespace Objetos_3D
                 else if(e.Button == MouseButtons.Left)
                 {
                     AtualizaImagem();
-                    if (e.X > posi.X)
-                        Objeto3D.RotacionaY(2);
-                    if(e.X < posi.X)
-                        Objeto3D.RotacionaY(-2);                   
+                   // if (e.X > posi.X)
+                    //Objeto3D.RotacionaY(2);
+                    //if(e.X < posi.X)
+                       // Objeto3D.RotacionaY(-2);                   
                     if(e.Y > posi.Y)
                         Objeto3D.RotacionaX(-2);
                     if (e.Y < posi.Y)
