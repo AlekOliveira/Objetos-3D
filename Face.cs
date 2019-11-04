@@ -45,5 +45,10 @@ namespace Objetos_3D
                 return true;
             return false;
         }
+
+        private void scanline()
+        {
+
+        }
     }
 }

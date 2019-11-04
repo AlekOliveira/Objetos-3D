@@ -150,7 +150,6 @@ namespace Objetos_3D
                     soma = 0;
                     for (int k = 0; k < 4; k++)
                         soma += M[i, k] * MA[k, j]; 
-                        //soma += MA[i, k] * M[k, j] ;
 
                     aux[i, j] = soma;
                 }
@@ -175,5 +174,6 @@ namespace Objetos_3D
             }
         }
 
+        
     }
 }

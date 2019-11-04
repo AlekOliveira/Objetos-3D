@@ -28,6 +28,8 @@ namespace Objetos_3D
             pbxY.Image = (Image)Dbmp.Bitmap;
             pbxZ.Image = (Image)Dbmp.Bitmap;
 
+            
+
             openFileDialog1.Filter = "Objetos 3d|*.obj";
             openFileDialog1.FileName = "Selecione um Objeto";
             openFileDialog1.Title = "Abrir Arquivos";            
@@ -134,10 +136,10 @@ namespace Objetos_3D
                 else if(e.Button == MouseButtons.Left)
                 {
                     AtualizaImagem();
-                   // if (e.X > posi.X)
-                    //Objeto3D.RotacionaY(2);
-                    //if(e.X < posi.X)
-                       // Objeto3D.RotacionaY(-2);                   
+                    if (e.X > posi.X)
+                        Objeto3D.RotacionaY(2);
+                    if(e.X < posi.X)
+                        Objeto3D.RotacionaY(-2);                   
                     if(e.Y > posi.Y)
                         Objeto3D.RotacionaX(-2);
                     if (e.Y < posi.Y)
@@ -192,6 +194,8 @@ namespace Objetos_3D
             // Flat - Usa normal da face
             // Gourard - normal do vetor (A = (n1+n2+n3+n4)), depois sair varrendo a listas de normais dos vertices
         }
+
+       
     }
 }
 

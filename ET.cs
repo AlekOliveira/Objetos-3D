@@ -10,24 +10,19 @@ namespace Objetos_3D
     {
         private double yMax, Xmin, IncX, Rmin, Gmin, Bmin, Zmin, IncR, IncG, IncB, IncZ;
 
-        public ET(double yMax, double xmin, double rmin, double gmin, double bmin, double zmin)
+        public ET(double yMax, double xmin, double incX, double rmin, double gmin, double bmin, double zmin, double incR, double incG, double incB, double incZ)
         {
-            this.yMax = yMax;
-            this.Xmin = xmin;
-            this.Rmin = rmin;
-            this.Gmin = gmin;
-            this.Bmin = bmin;
-            this.Zmin = zmin;
-            //this.IncR = incR;
-            //this.IncG = incG;
-            //this.IncB = incB;
-           // this.IncZ = incZ;
-            //this.IncX = incX;
-        }
-
-        public ET()
-        {
-            
+            this.YMax = yMax;
+            Xmin1 = xmin;
+            IncX1 = incX;
+            Rmin1 = rmin;
+            Gmin1 = gmin;
+            Bmin1 = bmin;
+            Zmin1 = zmin;
+            IncR1 = incR;
+            IncG1 = incG;
+            IncB1 = incB;
+            IncZ1 = incZ;
         }
 
         public double YMax { get => yMax; set => yMax = value; }
