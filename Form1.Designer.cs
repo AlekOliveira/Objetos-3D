@@ -30,56 +30,30 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Fprincipal));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btAbrir = new MetroFramework.Controls.MetroTile();
-            this.pbx = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ocultacao = new MetroFramework.Controls.MetroToggle();
             this.label2 = new System.Windows.Forms.Label();
-            this.pbxX = new System.Windows.Forms.PictureBox();
-            this.pbxY = new System.Windows.Forms.PictureBox();
-            this.pbxZ = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.pbx)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxY)).BeginInit();
+            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.bt_luz = new MetroFramework.Controls.MetroTile();
+            this.pbxZ = new System.Windows.Forms.PictureBox();
+            this.pbxY = new System.Windows.Forms.PictureBox();
+            this.pbxX = new System.Windows.Forms.PictureBox();
+            this.pbx = new System.Windows.Forms.PictureBox();
+            this.btAbrir = new MetroFramework.Controls.MetroTile();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // btAbrir
-            // 
-            this.btAbrir.ActiveControl = null;
-            this.btAbrir.Location = new System.Drawing.Point(160, 13);
-            this.btAbrir.Name = "btAbrir";
-            this.btAbrir.Size = new System.Drawing.Size(83, 41);
-            this.btAbrir.Style = MetroFramework.MetroColorStyle.Purple;
-            this.btAbrir.TabIndex = 1;
-            this.btAbrir.Text = "Abrir";
-            this.btAbrir.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btAbrir.TileImage = ((System.Drawing.Image)(resources.GetObject("btAbrir.TileImage")));
-            this.btAbrir.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btAbrir.UseSelectable = true;
-            this.btAbrir.UseTileImage = true;
-            this.btAbrir.Click += new System.EventHandler(this.BtAbrir_Click);
-            // 
-            // pbx
-            // 
-            this.pbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.pbx.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pbx.Location = new System.Drawing.Point(20, 60);
-            this.pbx.Name = "pbx";
-            this.pbx.Size = new System.Drawing.Size(850, 750);
-            this.pbx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbx.TabIndex = 3;
-            this.pbx.TabStop = false;
-            this.pbx.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Pbx_MouseDown);
-            this.pbx.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Pbx_MouseMove);
             // 
             // label1
             // 
@@ -94,7 +68,7 @@
             // ocultacao
             // 
             this.ocultacao.AutoSize = true;
-            this.ocultacao.Location = new System.Drawing.Point(1171, 83);
+            this.ocultacao.Location = new System.Drawing.Point(1171, 154);
             this.ocultacao.Name = "ocultacao";
             this.ocultacao.Size = new System.Drawing.Size(80, 17);
             this.ocultacao.Style = MetroFramework.MetroColorStyle.Purple;
@@ -110,41 +84,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(1167, 60);
+            this.label2.Location = new System.Drawing.Point(1167, 131);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(127, 20);
             this.label2.TabIndex = 9;
             this.label2.Text = "Backface Culling";
-            // 
-            // pbxX
-            // 
-            this.pbxX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.pbxX.Location = new System.Drawing.Point(897, 60);
-            this.pbxX.Name = "pbxX";
-            this.pbxX.Size = new System.Drawing.Size(240, 240);
-            this.pbxX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxX.TabIndex = 10;
-            this.pbxX.TabStop = false;
-            // 
-            // pbxY
-            // 
-            this.pbxY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.pbxY.Location = new System.Drawing.Point(897, 315);
-            this.pbxY.Name = "pbxY";
-            this.pbxY.Size = new System.Drawing.Size(240, 240);
-            this.pbxY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxY.TabIndex = 11;
-            this.pbxY.TabStop = false;
-            // 
-            // pbxZ
-            // 
-            this.pbxZ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.pbxZ.Location = new System.Drawing.Point(897, 570);
-            this.pbxZ.Name = "pbxZ";
-            this.pbxZ.Size = new System.Drawing.Size(240, 240);
-            this.pbxZ.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxZ.TabIndex = 12;
-            this.pbxZ.TabStop = false;
             // 
             // label3
             // 
@@ -179,11 +123,116 @@
             this.label5.TabIndex = 15;
             this.label5.Text = "Lateral(Y,Z)";
             // 
+            // metroComboBox1
+            // 
+            this.metroComboBox1.FormattingEnabled = true;
+            this.metroComboBox1.ItemHeight = 23;
+            this.metroComboBox1.Items.AddRange(new object[] {
+            "xy",
+            "Cabinet",
+            "Cavalheira",
+            "1 Ponto de fuga"});
+            this.metroComboBox1.Location = new System.Drawing.Point(1171, 83);
+            this.metroComboBox1.Name = "metroComboBox1";
+            this.metroComboBox1.Size = new System.Drawing.Size(121, 29);
+            this.metroComboBox1.Style = MetroFramework.MetroColorStyle.Purple;
+            this.metroComboBox1.TabIndex = 16;
+            this.metroComboBox1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroComboBox1.UseSelectable = true;
+            this.metroComboBox1.SelectedIndexChanged += new System.EventHandler(this.MetroComboBox1_SelectedIndexChanged);
+            // 
+            // bt_luz
+            // 
+            this.bt_luz.ActiveControl = null;
+            this.bt_luz.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.bt_luz.Location = new System.Drawing.Point(455, 252);
+            this.bt_luz.Name = "bt_luz";
+            this.bt_luz.Size = new System.Drawing.Size(30, 30);
+            this.bt_luz.Style = MetroFramework.MetroColorStyle.Black;
+            this.bt_luz.TabIndex = 17;
+            this.bt_luz.TileImage = global::Objetos_3D.Properties.Resources.Light_Bulb_256_redimensionada;
+            this.bt_luz.UseSelectable = true;
+            this.bt_luz.UseTileImage = true;
+            this.bt_luz.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MetroTile1_MouseMove);
+            // 
+            // pbxZ
+            // 
+            this.pbxZ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.pbxZ.Location = new System.Drawing.Point(897, 570);
+            this.pbxZ.Name = "pbxZ";
+            this.pbxZ.Size = new System.Drawing.Size(240, 240);
+            this.pbxZ.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxZ.TabIndex = 12;
+            this.pbxZ.TabStop = false;
+            // 
+            // pbxY
+            // 
+            this.pbxY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.pbxY.Location = new System.Drawing.Point(897, 315);
+            this.pbxY.Name = "pbxY";
+            this.pbxY.Size = new System.Drawing.Size(240, 240);
+            this.pbxY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxY.TabIndex = 11;
+            this.pbxY.TabStop = false;
+            // 
+            // pbxX
+            // 
+            this.pbxX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.pbxX.Location = new System.Drawing.Point(897, 60);
+            this.pbxX.Name = "pbxX";
+            this.pbxX.Size = new System.Drawing.Size(240, 240);
+            this.pbxX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxX.TabIndex = 10;
+            this.pbxX.TabStop = false;
+            // 
+            // pbx
+            // 
+            this.pbx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.pbx.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pbx.Location = new System.Drawing.Point(20, 60);
+            this.pbx.Name = "pbx";
+            this.pbx.Size = new System.Drawing.Size(850, 750);
+            this.pbx.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbx.TabIndex = 3;
+            this.pbx.TabStop = false;
+            this.pbx.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Pbx_MouseDown);
+            this.pbx.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Pbx_MouseMove);
+            // 
+            // btAbrir
+            // 
+            this.btAbrir.ActiveControl = null;
+            this.btAbrir.Location = new System.Drawing.Point(160, 13);
+            this.btAbrir.Name = "btAbrir";
+            this.btAbrir.Size = new System.Drawing.Size(83, 41);
+            this.btAbrir.Style = MetroFramework.MetroColorStyle.Purple;
+            this.btAbrir.TabIndex = 1;
+            this.btAbrir.Text = "Abrir";
+            this.btAbrir.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btAbrir.TileImage = ((System.Drawing.Image)(resources.GetObject("btAbrir.TileImage")));
+            this.btAbrir.TileImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btAbrir.UseSelectable = true;
+            this.btAbrir.UseTileImage = true;
+            this.btAbrir.Click += new System.EventHandler(this.BtAbrir_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.Control;
+            this.label6.Location = new System.Drawing.Point(1167, 60);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(71, 20);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Projeção";
+            // 
             // Fprincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1361, 830);
+            this.ClientSize = new System.Drawing.Size(1465, 830);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.bt_luz);
+            this.Controls.Add(this.metroComboBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -200,10 +249,10 @@
             this.Text = "Objetos-3D";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.TransparencyKey = System.Drawing.Color.LavenderBlush;
-            ((System.ComponentModel.ISupportInitialize)(this.pbx)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbx)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -224,6 +273,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private MetroFramework.Controls.MetroTile bt_luz;
+        private System.Windows.Forms.Label label6;
     }
 }
 

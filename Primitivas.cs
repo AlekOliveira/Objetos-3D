@@ -10,7 +10,7 @@ namespace Objetos_3D
 {
     class Primitivas
     {
-        //public static void Bresenhan(Vertice p1, Vertice p2, Bitmap b)
+        
         public static void Bresenhan(Vertice p1, Vertice p2, DirectBitmap b, Color c)
         {
             int declive = 1;
@@ -32,7 +32,7 @@ namespace Objetos_3D
                 incE = 2 * dy;
                 incNE = 2 * (dy - dx);
                 d = incNE;
-                y = (int)p1.Y;
+                y = (int)p1.Y;                
                 for (x = (int)p1.X; x <= p2.X; ++x)
                 {
                     if(x >= 0 && x < b.Width && y >= 0 && y < b.Height)

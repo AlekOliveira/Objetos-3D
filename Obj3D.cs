@@ -14,6 +14,8 @@ namespace Objetos_3D
         public List<Vertice> VerticesAtuais = new List<Vertice>();
         public List<Face> Faces = new List<Face>();
         public List<Vetor> NormaisFaces = new List<Vetor>();
+        private Vetor luz = new Vetor(1, 1, 1);
+        public double[,] zbuffer;
         //Lista de normais das faces
         //Lista de normais dos vértices
 
@@ -32,28 +34,146 @@ namespace Objetos_3D
         }
 
         //METODOS PUBLICOS
-        public void DesenhaFaces(DirectBitmap bmp, Color cor, bool visivel)
+        public void DesenhaXY(DirectBitmap bmp, Color cor, bool visivel)
         {
-            Vertice v1, v2, v3;
+            zBuffer(bmp.Width, bmp.Height);
+            Vertice v1, v2;
             foreach (Face f in this.Faces)
             {
-                v1 = new Vertice(VerticesAtuais[f.Idx0].X + dx, VerticesAtuais[f.Idx0].Y + dy, 0);
-                v2 = new Vertice(VerticesAtuais[f.Idx1].X + dx, VerticesAtuais[f.Idx1].Y + dy, 0);
-                v3 = new Vertice(VerticesAtuais[f.Idx2].X + dx, VerticesAtuais[f.Idx2].Y + dy, 0);
-                if (visivel)
+
+                /*for (int i = 0; i < f.length(); i++)
                 {
-                    if (f.calculaNormal(VerticesAtuais, NormaisFaces))
+                    v1 = new Vertice(VerticesAtuais[f.getFace(i)].X + dx, VerticesAtuais[f.getFace(i)].Y + dy, VerticesAtuais[f.getFace(i)].Z);
+                    if (i == f.length() - 1)
+                        v2 = new Vertice(VerticesAtuais[f.getFace(0)].X + dx, VerticesAtuais[f.getFace(0)].Y + dy, VerticesAtuais[f.getFace(0)].Z);
+                    else
+                        v2 = new Vertice(VerticesAtuais[f.getFace(i + 1)].X + dx, VerticesAtuais[f.getFace(i + 1)].Y + dy, VerticesAtuais[f.getFace(i + 1)].Z);
+
+                    if (visivel)
+                    {
+                        if(f.calculaNormal(VerticesAtuais))
+                        {
+                            Primitivas.Bresenhan(v1, v2, bmp, cor);
+                            //f.ScanLineFlat(bmp, Color.Red, VerticesAtuais, zbuffer);
+                        }
+                            
+                    }
+                    else
                     {
                         Primitivas.Bresenhan(v1, v2, bmp, cor);
-                        Primitivas.Bresenhan(v2, v3, bmp, cor);
-                        Primitivas.Bresenhan(v3, v1, bmp, cor);
+                        //f.ScanLineFlat(bmp, Color.Red, VerticesAtuais, zbuffer);
                     }
-                }
-                else
+
+                } */ 
+
+                f.ScanLineFlat(bmp, Color.White, VerticesAtuais, zbuffer, luz);
+            }
+        }
+
+        public void DesenhaCabinet(DirectBitmap bmp, Color cor, bool visivel)
+        {
+
+            double alfa = (Math.PI * 63.4) /180;
+            Vertice v1, v2;
+
+            foreach (Face f in this.Faces)
+            {
+                for (int i = 0; i < f.length(); i++)
                 {
+                    v1 = new Vertice(VerticesAtuais[f.getFace(i)].X + dx, VerticesAtuais[f.getFace(i)].Y + dy, VerticesAtuais[f.getFace(i)].Z);
+                    if (i == f.length() - 1)
+                        v2 = new Vertice(VerticesAtuais[f.getFace(0)].X + dx, VerticesAtuais[f.getFace(0)].Y + dy, VerticesAtuais[f.getFace(0)].Z);
+                    else
+                        v2 = new Vertice(VerticesAtuais[f.getFace(i + 1)].X + dx, VerticesAtuais[f.getFace(i + 1)].Y + dy, VerticesAtuais[f.getFace(i + 1)].Z);
+
+
+                    v1.X = v1.X + (v1.Z * (Math.Cos(alfa)) * 0.5);
+                    v1.Y = v1.Y + (v1.Z * (Math.Sin(alfa))* 0.5) ;
+
+                    v2.X = v2.X + (v2.Z * (Math.Cos(alfa))* 0.5) ;
+                    v2.Y = v2.Y + (v2.Z * (Math.Sin(alfa))* 0.5) ;
+
+
+                    /*if (visivel)
+                    {
+                        if (f.calculaNormal(VerticesAtuais, NormaisFaces))
+                            Primitivas.Bresenhan(v1, v2, bmp, cor);
+                    }
+                    else*/
+                        Primitivas.Bresenhan(v1, v2, bmp, cor);
+                }
+            }
+        }
+
+        public void DesenhaCavaleira(DirectBitmap bmp, Color cor, bool visivel)
+        {
+
+            double alfa = (Math.PI * 45) / 180;
+            Vertice v1, v2;
+
+            foreach (Face f in this.Faces)
+            {
+                for (int i = 0; i < f.length(); i++)
+                {
+                    v1 = new Vertice(VerticesAtuais[f.getFace(i)].X + dx, VerticesAtuais[f.getFace(i)].Y + dy, VerticesAtuais[f.getFace(i)].Z);
+                    if (i == f.length() - 1)
+                        v2 = new Vertice(VerticesAtuais[f.getFace(0)].X + dx, VerticesAtuais[f.getFace(0)].Y + dy, VerticesAtuais[f.getFace(0)].Z);
+                    else
+                        v2 = new Vertice(VerticesAtuais[f.getFace(i + 1)].X + dx, VerticesAtuais[f.getFace(i + 1)].Y + dy, VerticesAtuais[f.getFace(i + 1)].Z);
+
+
+                    v1.X = v1.X + (v1.Z * (Math.Cos(alfa)));
+                    v1.Y = v1.Y + (v1.Z * (Math.Sin(alfa)));
+
+                    v2.X = v2.X + (v2.Z * (Math.Cos(alfa)));
+                    v2.Y = v2.Y + (v2.Z * (Math.Sin(alfa)));
+
+
+                    /*if (visivel)
+                    {
+                        if (f.calculaNormal(VerticesAtuais, NormaisFaces))
+                            Primitivas.Bresenhan(v1, v2, bmp, cor);
+                    }
+                    else*/
+                        Primitivas.Bresenhan(v1, v2, bmp, cor);
+                }
+            }
+        }
+
+        public void DesenhaPtfuga(DirectBitmap bmp, Color cor, bool visivel)
+        {
+            int d = 20;
+            Vertice v1, v2;
+
+            foreach (Face f in this.Faces)
+            {
+                for (int i = 0; i < f.length(); i++)
+                {
+                    v1 = new Vertice(VerticesAtuais[f.getFace(i)].X, VerticesAtuais[f.getFace(i)].Y, VerticesAtuais[f.getFace(i)].Z);
+                    if (i == f.length() - 1)
+                        v2 = new Vertice(VerticesAtuais[f.getFace(0)].X, VerticesAtuais[f.getFace(0)].Y, VerticesAtuais[f.getFace(0)].Z);
+                    else
+                        v2 = new Vertice(VerticesAtuais[f.getFace(i + 1)].X, VerticesAtuais[f.getFace(i + 1)].Y, VerticesAtuais[f.getFace(i + 1)].Z);
+                    
+
+                    v1.X = v1.X * d/ v1.Z;
+                    v1.Y = v1.Y * d / v1.Z;
+                    v2.X = v2.X * d / v2.Z;
+                    v2.Y = v2.Y * d / v2.Z;
+
+                    v1.X += dx;
+                    v1.Y += dy;
+                    v2.X += dx;
+                    v2.Y += dy;
+
+
+                    /*if (visivel)
+                    {
+                        if (f.calculaNormal(VerticesAtuais, NormaisFaces))
+                            Primitivas.Bresenhan(v1, v2, bmp, cor);
+                    }
+                    else*/
                     Primitivas.Bresenhan(v1, v2, bmp, cor);
-                    Primitivas.Bresenhan(v2, v3, bmp, cor);
-                    Primitivas.Bresenhan(v3, v1, bmp, cor);
                 }
             }
         }
@@ -108,6 +228,13 @@ namespace Objetos_3D
             AtualizaVertices();
         }
 
+        public void setLuz(int x, int y)
+        {
+            luz.X = x -dx;
+            luz.Y = y -dy;
+
+        }
+
         public void RotacionaY(double R)
         {
             R = (R * Math.PI) / 180;
@@ -155,8 +282,7 @@ namespace Objetos_3D
                 }
             }
             this.MA = aux;
-        }
-        
+        }        
 
         private void AtualizaVertices()
         {
@@ -174,6 +300,12 @@ namespace Objetos_3D
             }
         }
 
-        
+        private void zBuffer(int width, int heigh)
+        {
+            zbuffer = new double[heigh, width];
+            for (int i = 0; i < heigh; i++)
+                for (int j = 0; j < width; j++)
+                    zbuffer[i, j] = int.MaxValue;
+        }
     }
 }

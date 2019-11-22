@@ -8,11 +8,12 @@ namespace Objetos_3D
 {
     class ET
     {
-        private double yMax, Xmin, IncX, Rmin, Gmin, Bmin, Zmin, IncR, IncG, IncB, IncZ;
+        private double yMax, yMin, Xmin, IncX, Rmin, Gmin, Bmin, Zmin, IncR, IncG, IncB, IncZ;
 
-        public ET(double yMax, double xmin, double incX, double rmin, double gmin, double bmin, double zmin, double incR, double incG, double incB, double incZ)
+        public ET(double yMax, double yMin, double xmin, double incX, double rmin, double gmin, double bmin, double zmin, double incR, double incG, double incB, double incZ)
         {
             this.YMax = yMax;
+            this.YMin = yMin;
             Xmin1 = xmin;
             IncX1 = incX;
             Rmin1 = rmin;
@@ -26,6 +27,7 @@ namespace Objetos_3D
         }
 
         public double YMax { get => yMax; set => yMax = value; }
+        public double YMin { get => yMin; set => yMin = value; }
         public double Xmin1 { get => Xmin; set => Xmin = value; }
         public double IncX1 { get => IncX; set => IncX = value; }
         public double Rmin1 { get => Rmin; set => Rmin = value; }
@@ -36,5 +38,10 @@ namespace Objetos_3D
         public double IncG1 { get => IncG; set => IncG = value; }
         public double IncB1 { get => IncB; set => IncB = value; }
         public double IncZ1 { get => IncZ; set => IncZ = value; }
+
+        public void Att()
+        {
+            Xmin += IncX;
+        }
     }
 }

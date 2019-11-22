@@ -17,7 +17,9 @@ namespace Objetos_3D
         private Obj3D Objeto3D = null;
         private DirectBitmap Dbmp;
         private Point posi;
-        private Boolean mouseDown = false;
+        private bool mouseDown = false;
+        private string modo = "xy";
+        private int x, y;
         public Fprincipal()
         {
             InitializeComponent();
@@ -32,7 +34,8 @@ namespace Objetos_3D
 
             openFileDialog1.Filter = "Objetos 3d|*.obj";
             openFileDialog1.FileName = "Selecione um Objeto";
-            openFileDialog1.Title = "Abrir Arquivos";            
+            openFileDialog1.Title = "Abrir Arquivos";
+            metroComboBox1.SelectedIndex = 0;
             this.pbx.MouseWheel += ScrollMouse;
         }
 
@@ -78,22 +81,25 @@ namespace Objetos_3D
                                 linha = linha.Remove(0, 2);
                                 linha = linha.Replace('.', ',');
                                 split = linha.Split(' ');
-                                Vertices.Add(new Vertice((int)double.Parse(split[0]), (int)double.Parse(split[1]), (int)double.Parse(split[2])));
+                                Vertices.Add(new Vertice(double.Parse(split[0]), double.Parse(split[1]), double.Parse(split[2])));
                             }
                             else if (linha[0] == 'f')
                             {
                                 Console.WriteLine(linha);
                                 linha = linha.Remove(0, 2);
                                 split = linha.Split(' ');
-                                split[0] = split[0].Substring(0, split[0].IndexOf('/'));
-                                split[1] = split[1].Substring(0, split[1].IndexOf('/'));
-                                split[2] = split[2].Substring(0, split[2].IndexOf('/'));
-                                Faces.Add(new Face(int.Parse(split[0]), int.Parse(split[1]), int.Parse(split[2])));
+                                List<int> indices = new List<int>();
+                                for (int i = 0; i < split.Length; i++)
+                                {
+                                    split[i] = split[i].Substring(0, split[i].IndexOf('/'));
+                                    indices.Add(int.Parse(split[i])-1);
+                                }
+                                Faces.Add(new Face(indices));
                             }
                     }
                     AtualizaImagem();
-                    Objeto3D = new Obj3D(Vertices, Faces); //talvez vire lista
-                    Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
+                    Objeto3D = new Obj3D(Vertices, Faces); 
+                    Desenha();                    
                     RefreshPbx();
                 }
                 catch (SecurityException ex)
@@ -115,7 +121,7 @@ namespace Objetos_3D
                     Objeto3D.Escala(0.9, 0.9, 0.9);
 
                 AtualizaImagem();
-                Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
+                Desenha();
                 RefreshPbx();
             }
         }
@@ -129,7 +135,7 @@ namespace Objetos_3D
                     AtualizaImagem();
 
                     Objeto3D.Translada(e.X - posi.X, e.Y - posi.Y, 0);
-                    Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
+                    Desenha();
                     RefreshPbx();
                     posi = e.Location;                
                 }
@@ -145,10 +151,9 @@ namespace Objetos_3D
                     if (e.Y < posi.Y)
                         Objeto3D.RotacionaX(2);
 
-                    Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
+                    Desenha();
                     RefreshPbx();
-                }
-            
+                }            
         }
         private void Pbx_MouseDown(object sender, MouseEventArgs e)
         {
@@ -160,7 +165,7 @@ namespace Objetos_3D
             AtualizaImagem();
             
             Objeto3D.RotacionaX(10);
-            Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
+            Desenha();
             RefreshPbx();
         }
 
@@ -169,7 +174,7 @@ namespace Objetos_3D
             AtualizaImagem();
 
             Objeto3D.RotacionaZ(10);
-            Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
+            Desenha();
             RefreshPbx();
         }
 
@@ -178,24 +183,71 @@ namespace Objetos_3D
             AtualizaImagem();
 
             Objeto3D.RotacionaY(7);
-            Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
+            Desenha();
             RefreshPbx();
         }      
 
         private void Ocultacao_CheckedChanged(object sender, EventArgs e)
         {
             AtualizaImagem();
-            Objeto3D.DesenhaFaces(Dbmp, Color.White, ocultacao.Checked);
+            Desenha();
             RefreshPbx();
+        }
+
+
+        public void Desenha()
+        {
+            if (modo == "xy")
+                Objeto3D.DesenhaXY(Dbmp, Color.White, ocultacao.Checked);
+            else if (modo == "Cabinet")
+                Objeto3D.DesenhaCabinet(Dbmp, Color.White, ocultacao.Checked);
+            else if (modo == "Cavalheira")
+                Objeto3D.DesenhaCavaleira(Dbmp, Color.White, ocultacao.Checked);
+            else if (modo == "1 Ponto de fuga")
+                Objeto3D.DesenhaPtfuga(Dbmp, Color.White, ocultacao.Checked);
         }
 
         private void MetroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Flat - Usa normal da face
-            // Gourard - normal do vetor (A = (n1+n2+n3+n4)), depois sair varrendo a listas de normais dos vertices
+            if(Objeto3D != null)            {
+
+                modo = metroComboBox1.Text;
+                AtualizaImagem();
+                Desenha();
+                RefreshPbx();
+            }            
         }
 
-       
+        private void MetroTile1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(e.Button.Equals(MouseButtons.Left))
+            {
+                x = e.X + bt_luz.Location.X;
+                y = e.Y + bt_luz.Location.Y;
+                if (x > pbx.Location.X && x < pbx.Location.X + pbx.Width - bt_luz.Width) 
+                    if(y > pbx.Location.Y && y < pbx.Location.Y + pbx.Height - bt_luz.Height)
+                    {
+                        bt_luz.SetBounds(x, y, 30, 30);
+                        Objeto3D.setLuz(x, y);
+                        AtualizaImagem();
+                        Desenha();
+                        RefreshPbx();
+                    }                        
+            }
+        }
+
+
+
+
+
+
+
+
+        // Flat - Usa normal da face
+        // Gourard - normal do vetor (A = (n1+n2+n3+n4)), depois sair varrendo a listas de normais dos vertices
+
+
+
     }
 }
 
