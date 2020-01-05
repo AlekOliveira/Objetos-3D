@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
-using System.Threading.Tasks;
-
-namespace Objetos_3D
+﻿namespace Objetos_3D
 {
     class Vertice 
     {
-        
+
+        private Vetor vetNormal;
         private double x, y, z;
         public Vertice(double x, double y, double z)
         {
@@ -23,5 +17,7 @@ namespace Objetos_3D
         public double X { get => x; set => x = value; }
         public double Y { get => y; set => y = value; }
         public double Z { get => z; set => z = value; }
+
+        internal Vetor VetNormal { get => vetNormal; set => vetNormal = value; }
     }
 }

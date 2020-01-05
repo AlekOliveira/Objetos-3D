@@ -123,20 +123,10 @@
   <metadata name="colorDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>157, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btAbrir.TileImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFRSURBVEhLxda/K8RxHMfxGxyLkvKrDBbZpG5ULAZl
-        ko3FZhBlUhSRDAYZLXL/gUEGmwEb6TJYlCwkGRVyfT3fp/e3+3z7Hrrzft+rHvX9Xnf3HK77fr+ZKIrq
-        IvVFD+UnvRiroBPl762ZHuTwgEq7QDuCD9dCDxbx2/LIIviCaunBMv6ye9xV4RbraEIQXoLHBlGX8Dh+
-        DJ/jwEA/UsOvmEKLkW70IJsMb6EVp6UzmxWRT4blx5/9PjRdUcMr+EQf9mG9Fw1vQP5vXSjAelca3sQx
-        OvAB6x1pWK4qaxiFx7Y1vAqJStxj0xqeh9wWD+GxnIaHMIAbWO8JbRpuhsTfYL0TNGpYTMJju4iv1WIH
-        HptDED6D9eQaMYI4LDeGR1jvGXJ1jMPDeIf1LlFqatjjjiSTB8YgPAOPTSAIy9PBHpJPh//lGgtoQBB2
-        l/qivSjzBYtwyqRRQpmDAAAAAElFTkSuQmCC
-</value>
-  </data>
+  <metadata name="colorDialog2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>278, 17</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>57</value>
+    <value>25</value>
   </metadata>
 </root>

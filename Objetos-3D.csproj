@@ -70,9 +70,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vertice.cs" />
     <Compile Include="Vetor.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <None Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

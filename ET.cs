@@ -42,6 +42,10 @@ namespace Objetos_3D
         public void Att()
         {
             Xmin += IncX;
+            Zmin += IncZ;
+            Rmin += IncR;
+            Gmin += IncG;
+            Bmin += IncB;
         }
     }
 }
