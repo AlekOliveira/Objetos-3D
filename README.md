@@ -9,8 +9,8 @@ O projeto conta com projeções e sombreamento. O modelo de iluminação está f
 ![img](https://user-images.githubusercontent.com/48293550/71787846-57874100-2ffb-11ea-87be-3facd89b761d.png)
 
 ### Comandos para manipulação do objeto
-- Rotação em X e Y (Botão esquerdo do mouse)
-- Rotação Z (Clique com o scroll do mouse)
+- Rotação nos eixos X e Y (Botão esquerdo do mouse)
+- Rotação no eixo Z (Clique com o scroll do mouse)
 - Escala (Scroll do mouse para cima ou baixo)
 - Translaçao (Botão direito do mouse)
 - O ponto de iluminação pode ser mudado arrastando o ícone de lâmpada
