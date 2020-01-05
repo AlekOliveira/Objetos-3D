@@ -6,6 +6,7 @@ Desenvolvido para matéria de computação gráfica da Faculdade de Informatica 
 
 O projeto conta com projeções e sombreamento. O modelo de iluminação está fixo.
 
+![img](https://user-images.githubusercontent.com/48293550/71787846-57874100-2ffb-11ea-87be-3facd89b761d.png)
 
 # Algoritimos utilizados
 
@@ -27,5 +28,5 @@ O projeto conta com projeções e sombreamento. O modelo de iluminação está f
 
 ### Projeto desenvolvido em conjunto de  [Henrique Ricci](https://github.com/riccihenrique)
 
-![img](https://user-images.githubusercontent.com/48293550/71787846-57874100-2ffb-11ea-87be-3facd89b761d.png)
+
 
