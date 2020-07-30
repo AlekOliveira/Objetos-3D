@@ -2,7 +2,7 @@
 
 Implementação de algoritmos de computação gráfica. Este projeto foi totalmente desenvolvido sem o uso de biblitecas auxiliares para computação gráfica, a primitiva responsável por desenhar os componentes em tela foi implementada seguindo o [algoritmo de bresenham](https://pt.qwe.wiki/wiki/Bresenham%27s_line_algorithm) assim como projeções, sombreamentos e ocultação de faces. O modelo de iluminação está fixo.
 
-**Observação:** Este projeto utiliza apenas a primitiva de bresenham devido ao seu alto desempenho em traçar retas, caso tenha interesse em outras primitivas gráficas de retas e também para circunferências, é só dar uma olhada ![neste meu outro repositório.](https://github.com/AlekOliveira/PrimitivasGraficas)
+**Observação:** Este projeto utiliza apenas a primitiva de bresenham devido ao seu alto desempenho em traçar retas, caso tenha interesse em outras primitivas gráficas de retas e também para circunferências, é só dar uma olhada [neste meu outro repositório.](https://github.com/AlekOliveira/PrimitivasGraficas)
 
 ![img](https://user-images.githubusercontent.com/48293550/71787846-57874100-2ffb-11ea-87be-3facd89b761d.png)
 
