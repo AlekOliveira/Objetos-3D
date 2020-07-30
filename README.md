@@ -1,7 +1,6 @@
 # Objetos-3D
 
-Implementação de algoritmos de computação gráfica
-O projeto conta com projeções e sombreamento. O modelo de iluminação está fixo.
+Implementação de algoritmos de computação gráfica. Este projeto conta com projeções e sombreamento. O modelo de iluminação está fixo.
 
 ![img](https://user-images.githubusercontent.com/48293550/71787846-57874100-2ffb-11ea-87be-3facd89b761d.png)
 
