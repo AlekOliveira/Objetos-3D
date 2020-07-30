@@ -31,7 +31,4 @@ Implementação de algoritmos de computação gráfica. Este projeto conta com p
 
 
 
-### Projeto desenvolvido em conjunto de  [Henrique Ricci](https://github.com/riccihenrique)
-
-
 
