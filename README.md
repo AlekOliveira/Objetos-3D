@@ -16,7 +16,6 @@ Implementação de algoritmos de computação gráfica. Este projeto foi totalme
 - Bresenham
 
 ### Iluminação
-- Phong Shading
 - Flat Shading
 - Gouraud Shading
 - Phong Shading
